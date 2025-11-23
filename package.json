@@ -1,0 +1,15 @@
+{
+  "name": "trinity-accidentals",
+  "private": true,
+  "workspaces": [
+    "web",
+    "accidentals-content-hub"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace web run dev",
+    "dev:studio": "npm --workspace accidentals-content-hub run dev",
+    "build:web": "npm --workspace web run build",
+    "deploy:web": "npm --workspace web run deploy",
+    "deploy:studio": "npm --workspace accidentals-content-hub run deploy"
+  }
+}
