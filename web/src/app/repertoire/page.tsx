@@ -19,7 +19,7 @@ export default async function RepertoirePage() {
   return (
     <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
-      <main className="py-20 px-8 max-w-7xl mx-auto">
+      <main className="py-20 px-8 max-w-7xl mx-auto flex-grow">
         <h1 className="text-5xl font-serif font-bold mb-12 text-center text-white">
           Our Repertoire
         </h1>

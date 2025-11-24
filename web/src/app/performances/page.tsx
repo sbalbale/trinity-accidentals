@@ -23,7 +23,7 @@ export default async function PerformancesPage() {
     <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
-      <main>
+      <main className="flex-grow">
         {/* Header */}
         <section className="py-20 bg-[#07294b] text-white">
           <div className="container mx-auto px-4 text-center">

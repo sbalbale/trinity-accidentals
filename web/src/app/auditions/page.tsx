@@ -39,7 +39,7 @@ export default async function AuditionsPage() {
   return (
     <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
-      <main>
+      <main className="flex-grow">
         {/* Hero Section */}
         <section className="py-20 bg-[#07294b] text-white text-center">
           <div className="container mx-auto px-4">

@@ -20,7 +20,7 @@ export default async function MembersPage() {
     <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
-      <section className="py-20 bg-[#07294b]">
+      <section className="py-20 bg-[#07294b] flex-grow">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">

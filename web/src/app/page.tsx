@@ -50,141 +50,146 @@ export default async function Home() {
   const yearsOfLegacy = currentYear - 1993;
 
   return (
-    <div className="min-h-screen bg-[#07294b]">
+    <div className="min-h-screen bg-[#07294b] flex flex-col">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="relative bg-[#07294b] text-white py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <img
-            src={
-              homeContent.heroImage
-                ? urlFor(homeContent.heroImage).url()
-                : "/musical-notes-pattern.jpg"
-            }
-            alt="Background Pattern"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-balance">
-              {homeContent.heroTitle.split(" ").slice(0, -1).join(" ")}{" "}
-              <span className="text-gold">
-                {homeContent.heroTitle.split(" ").slice(-1)}
-              </span>
-            </h1>
-            <div className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
-              {homeContent.heroSubtitle ? (
-                <PortableText
-                  value={homeContent.heroSubtitle}
-                  components={portableTextComponents}
-                />
-              ) : (
-                <p>
-                  A brotherhood united by harmony, tradition, and excellence in
-                  collegiate a cappella
-                </p>
-              )}
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="bg-gold text-navy hover:bg-gold/90 font-semibold"
-                >
-                  Book Us
-                </Button>
-              </Link>
-              <Link href="/repertoire">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
-                >
-                  Listen Now
-                </Button>
-              </Link>
-            </div>
+      <main className="flex-grow">
+        {/* Hero Section */}
+        <section className="relative bg-[#07294b] text-white py-24 md:py-32 overflow-hidden">
+          <div className="absolute inset-0 opacity-5">
+            <img
+              src={
+                homeContent.heroImage
+                  ? urlFor(homeContent.heroImage).url()
+                  : "/musical-notes-pattern.jpg"
+              }
+              alt="Background Pattern"
+              className="w-full h-full object-cover"
+            />
           </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-[#0b3c6b]">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            {[
-              { number: `${yearsOfLegacy}`, label: "Years of Legacy" },
-              { number: `${stats.performancesCount}+`, label: "Performances" },
-              {
-                number: `${stats.currentMembersCount}`,
-                label: "Active Members",
-              },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-sm md:text-base text-white/70">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Performance Section */}
-      <section className="py-20 bg-[#07294b] text-white">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                {homeContent.featuredTitle.split(" ").slice(0, -1).join(" ")}{" "}
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-balance">
+                {homeContent.heroTitle.split(" ").slice(0, -1).join(" ")}{" "}
                 <span className="text-gold">
-                  {homeContent.featuredTitle.split(" ").slice(-1)}
+                  {homeContent.heroTitle.split(" ").slice(-1)}
                 </span>
-              </h2>
-              <div className="text-lg leading-relaxed text-white/80 mb-8">
-                {homeContent.featuredDescription ? (
+              </h1>
+              <div className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
+                {homeContent.heroSubtitle ? (
                   <PortableText
-                    value={homeContent.featuredDescription}
+                    value={homeContent.heroSubtitle}
                     components={portableTextComponents}
                   />
                 ) : (
                   <p>
-                    From intimate campus concerts to regional competitions, the
-                    Accidentals deliver powerful performances that showcase our
-                    tight harmonies, dynamic stage presence, and passion for a
-                    cappella music. Every show is a celebration of our
-                    brotherhood and musical journey.
+                    A brotherhood united by harmony, tradition, and excellence
+                    in collegiate a cappella
                   </p>
                 )}
               </div>
-              <Link href="/performances">
-                <Button
-                  size="lg"
-                  className="bg-gold text-navy hover:bg-gold/90 font-semibold"
-                >
-                  View Performance Schedule
-                </Button>
-              </Link>
-            </div>
-            <div className="relative aspect-video bg-light-gray/10 rounded-lg overflow-hidden">
-              <img
-                src={
-                  homeContent.featuredImage
-                    ? urlFor(homeContent.featuredImage).url()
-                    : "/college-a-cappella-group-performing.jpg"
-                }
-                alt="Accidentals performing on stage"
-                className="w-full h-full object-cover"
-              />
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                  >
+                    Book Us
+                  </Button>
+                </Link>
+                <Link href="/repertoire">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
+                  >
+                    Listen Now
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-16 bg-[#0b3c6b]">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              {[
+                { number: `${yearsOfLegacy}`, label: "Years of Legacy" },
+                {
+                  number: `${stats.performancesCount}+`,
+                  label: "Performances",
+                },
+                {
+                  number: `${stats.currentMembersCount}`,
+                  label: "Active Members",
+                },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm md:text-base text-white/70">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Performance Section */}
+        <section className="py-20 bg-[#07294b] text-white">
+          <div className="container mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
+                  {homeContent.featuredTitle.split(" ").slice(0, -1).join(" ")}{" "}
+                  <span className="text-gold">
+                    {homeContent.featuredTitle.split(" ").slice(-1)}
+                  </span>
+                </h2>
+                <div className="text-lg leading-relaxed text-white/80 mb-8">
+                  {homeContent.featuredDescription ? (
+                    <PortableText
+                      value={homeContent.featuredDescription}
+                      components={portableTextComponents}
+                    />
+                  ) : (
+                    <p>
+                      From intimate campus concerts to regional competitions,
+                      the Accidentals deliver powerful performances that
+                      showcase our tight harmonies, dynamic stage presence, and
+                      passion for a cappella music. Every show is a celebration
+                      of our brotherhood and musical journey.
+                    </p>
+                  )}
+                </div>
+                <Link href="/performances">
+                  <Button
+                    size="lg"
+                    className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                  >
+                    View Performance Schedule
+                  </Button>
+                </Link>
+              </div>
+              <div className="relative aspect-video bg-light-gray/10 rounded-lg overflow-hidden">
+                <img
+                  src={
+                    homeContent.featuredImage
+                      ? urlFor(homeContent.featuredImage).url()
+                      : "/college-a-cappella-group-performing.jpg"
+                  }
+                  alt="Accidentals performing on stage"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>

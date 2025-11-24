@@ -7,7 +7,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
-      <section className="py-20 bg-[#07294b] text-white">
+      <section className="py-20 bg-[#07294b] text-white flex-grow">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
