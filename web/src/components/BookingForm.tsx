@@ -96,18 +96,14 @@ export default function BookingForm() {
             <Label htmlFor="eventType" className="text-white">
               Event Type
             </Label>
-            <Select name="eventType" required>
-              <SelectTrigger className="bg-[#07294b] border-white/20 text-white focus:border-gold">
-                <SelectValue placeholder="Select an event type" />
-              </SelectTrigger>
-              <SelectContent className="bg-[#07294b] border-white/20 text-white">
-                <SelectItem value="Wedding">Wedding</SelectItem>
-                <SelectItem value="Corporate Event">Corporate Event</SelectItem>
-                <SelectItem value="Private Party">Private Party</SelectItem>
-                <SelectItem value="Concert">Concert</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
-              </SelectContent>
-            </Select>
+            <Input
+              type="text"
+              id="eventType"
+              name="eventType"
+              required
+              placeholder="e.g., Wedding, Corporate Event, Concert"
+              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+            />
           </div>
 
           <div className="space-y-2">

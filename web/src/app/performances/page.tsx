@@ -20,7 +20,7 @@ export default async function PerformancesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07294b]">
+    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
       <main>

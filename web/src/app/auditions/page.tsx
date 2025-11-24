@@ -37,7 +37,7 @@ export default async function AuditionsPage() {
   const faqs = auditionInfo?.faqs || fallbackFaqs;
 
   return (
-    <div className="min-h-screen bg-[#07294b]">
+    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
       <main>
         {/* Hero Section */}

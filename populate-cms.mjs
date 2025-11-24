@@ -114,18 +114,21 @@ async function populateCMS() {
           title: "Brotherhood",
           description:
             "We're not just singers—we're brothers who support each other on stage and in life.",
+          icon: "Users",
         },
         {
           _type: "object",
           title: "Musical Excellence",
           description:
             "Our dedication to perfect harmony and innovative arrangements sets us apart.",
+          icon: "Music",
         },
         {
           _type: "object",
           title: "Storied Tradition",
           description:
             "Decades of performances at Trinity and beyond have built our prestigious reputation.",
+          icon: "Award",
         },
       ],
     });

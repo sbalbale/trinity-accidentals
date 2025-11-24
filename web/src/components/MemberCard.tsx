@@ -2,68 +2,112 @@
 
 import Image from "next/image";
 import { Member, urlFor } from "@/lib/sanity";
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface MemberCardProps {
   member: Member;
 }
 
 export default function MemberCard({ member }: MemberCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="group relative w-full max-w-[300px] aspect-3/4 rounded-xl overflow-hidden shadow-lg bg-brand-surface dark:bg-brand-surface-dark">
-      {/* Image */}
-      {member.image ? (
-        <Image
-          src={urlFor(member.image).width(600).height(800).url()}
-          alt={member.name}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-      ) : (
-        <div className="w-full h-full flex items-center justify-center bg-trinity-100 dark:bg-trinity-800">
-          <span className="text-trinity-400 dark:text-trinity-500 font-body">No Image</span>
+    <>
+      {/* Card */}
+      <div
+        onClick={() => setIsOpen(true)}
+        className="group cursor-pointer w-64 bg-[#0b3c6b] rounded-lg overflow-hidden border border-white/10 hover:border-gold transition-colors"
+      >
+        {/* Image */}
+        <div className="relative w-full h-48 md:h-64">
+          {member.image ? (
+            <Image
+              src={urlFor(member.image).width(600).height(800).url()}
+              alt={member.name}
+              fill
+              className="object-cover"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-navy text-white/50">
+              No Image
+            </div>
+          )}
         </div>
-      )}
-
-      {/* Default Overlay (Bottom) */}
-      <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-trinity-900 via-trinity-900/80 to-transparent p-4 pt-12 translate-y-0 transition-transform duration-300 group-hover:translate-y-full">
-        <h3 className="font-heading text-xl font-bold text-white">
-          {member.name}
-        </h3>
-        <p className="font-body text-gold-400 font-semibold text-sm">
-          {member.voicePart}
-        </p>
-      </div>
-
-      {/* Hover Overlay (Full Reveal) */}
-      <div className="absolute inset-0 bg-trinity-900/90 p-6 flex flex-col justify-center items-center text-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-        <h3 className="font-heading text-2xl font-bold text-white mb-2">
-          {member.name}
-        </h3>
-        <p className="font-body text-gold-400 font-bold text-lg mb-4">
-          {member.voicePart}
-        </p>
-        
-        <div className="space-y-2 text-white font-body">
-          {member.major && (
-            <p>
-              <span className="text-trinity-200 text-sm uppercase tracking-wider block">Major</span>
-              {member.major}
-            </p>
-          )}
-          {member.hometown && (
-            <p>
-              <span className="text-trinity-200 text-sm uppercase tracking-wider block">Hometown</span>
-              {member.hometown}
-            </p>
-          )}
+        {/* Details */}
+        <div className="p-4 text-center space-y-2">
+          <h3 className="font-heading text-xl font-bold text-white">
+            {member.name}
+          </h3>
           {member.gradYear && (
-            <p>
-              <span className="text-trinity-200 text-sm uppercase tracking-wider block">Class of</span>
+            <p className="text-md font-semibold text-gray-400">
+              <span className="tracking-wider mr-1">Class of</span>
               {member.gradYear}
             </p>
           )}
+          <p className="font-body text-gold font-semibold text-lg">
+            {member.voicePart}
+          </p>
         </div>
       </div>
-    </div>
+
+      {/* Modal Dialog for full info */}
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="bg-[#0b3c6b] border-gold/20 text-white max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-3xl text-gold mb-4">
+              {member.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                  Voice Part
+                </p>
+                <p className="text-gold font-semibold">{member.voicePart}</p>
+              </div>
+              {member.gradYear && (
+                <div>
+                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                    Class Year
+                  </p>
+                  <p>{member.gradYear}</p>
+                </div>
+              )}
+              {member.major && (
+                <div>
+                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                    Major
+                  </p>
+                  <p>{member.major}</p>
+                </div>
+              )}
+              {member.hometown && (
+                <div>
+                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                    Hometown
+                  </p>
+                  <p>{member.hometown}</p>
+                </div>
+              )}
+            </div>
+            {member.bio && (
+              <div className="pt-4 border-t border-white/10">
+                <p className="text-white/60 uppercase tracking-wider text-xs mb-2">
+                  Biography
+                </p>
+                <p className="text-white/90 leading-relaxed">{member.bio}</p>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }

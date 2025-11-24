@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Users, Music, Award } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { getAboutPage } from "@/lib/sanity";
@@ -17,16 +17,19 @@ export default async function AboutPage() {
         title: "Brotherhood",
         description:
           "We're not just singers—we're brothers who support each other on stage and in life.",
+        icon: "Users",
       },
       {
         title: "Musical Excellence",
         description:
           "Our dedication to perfect harmony and innovative arrangements sets us apart.",
+        icon: "Music",
       },
       {
         title: "Storied Tradition",
         description:
           "Decades of performances at Trinity and beyond have built our prestigious reputation.",
+        icon: "Award",
       },
     ],
   };
@@ -44,14 +47,8 @@ export default async function AboutPage() {
     console.error("Error fetching about page:", e);
   }
 
-  const iconMap: { [key: string]: any } = {
-    Brotherhood: Users,
-    "Musical Excellence": Music,
-    "Storied Tradition": Award,
-  };
-
   return (
-    <div className="min-h-screen bg-[#07294b]">
+    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
       <section className="py-20 bg-[#07294b]">
@@ -79,8 +76,12 @@ export default async function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
-            {aboutContent.values.map((value, i) => {
-              const IconComponent = iconMap[value.title] || Users;
+            {aboutContent.values.map((value: any, i: number) => {
+              // Get the icon component from lucide-react based on the icon name
+              const iconName = value.icon || "Users";
+              const IconComponent =
+                (LucideIcons as any)[iconName] || (LucideIcons as any).Users;
+
               return (
                 <Card
                   key={i}

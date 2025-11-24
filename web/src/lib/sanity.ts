@@ -25,6 +25,7 @@ export interface Member {
   major?: string;
   hometown?: string;
   gradYear?: number;
+  bio?: string;
   image?: {
     asset: {
       _ref: string;
@@ -55,6 +56,7 @@ export async function getMembers(): Promise<Member[]> {
     major,
     hometown,
     gradYear,
+    bio,
     image
   }`;
 
@@ -140,6 +142,7 @@ export interface AboutPage {
   values?: Array<{
     title: string;
     description: string;
+    icon?: string;
   }>;
 }
 

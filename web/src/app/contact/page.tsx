@@ -1,33 +1,27 @@
-import { Button } from "@/components/ui/button"
-import { Mail } from "lucide-react"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import ContactForm from "@/components/contact-form";
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-[#07294b]">
+    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
       <Navigation />
 
       <section className="py-20 bg-[#07294b] text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <Mail className="h-16 w-16 text-gold mx-auto mb-6" />
-            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
-            <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Interested in booking the Accidentals for your event? Want to learn more about joining our brotherhood?
-              We'd love to hear from you.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gold text-navy hover:bg-gold/90 font-semibold">
-                Book a Performance
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
-              >
-                Audition Info
-              </Button>
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-12">
+              <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
+                Get in Touch
+              </h1>
+              <p className="text-lg text-white/80 leading-relaxed">
+                Interested in booking the Accidentals for your event? Fill out
+                the form below and we'll get back to you as soon as possible.
+              </p>
+            </div>
+
+            <div className="bg-[#0b3c6b] rounded-lg p-8 border border-white/10">
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -35,5 +29,5 @@ export default function ContactPage() {
 
       <Footer />
     </div>
-  )
+  );
 }
