@@ -33,6 +33,12 @@ export default defineType({
         hotspot: true,
       },
     }),
+    defineField({
+      name: 'recordingUrl',
+      title: 'Recording URL',
+      type: 'url',
+      description: 'Link to watch/listen to this performance (e.g., YouTube)',
+    }),
   ],
   preview: {
     select: {

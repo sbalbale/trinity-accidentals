@@ -45,6 +45,7 @@ export interface Song {
     name: string;
   }>;
   semesterLearned?: string;
+  recordingUrl?: string;
 }
 
 // GROQ query to fetch members, sorted by voicePart then name
@@ -71,7 +72,8 @@ export async function getSongs(): Promise<Song[]> {
     originalArtist,
     soloists[]->{name},
     arrangers[]->{name},
-    semesterLearned
+    semesterLearned,
+    recordingUrl
   }`;
 
   return client.fetch(query);
@@ -84,6 +86,7 @@ export interface Performance {
   location: string;
   description: any;
   image: any;
+  recordingUrl?: string;
 }
 
 export interface Audition {
@@ -98,7 +101,15 @@ export interface Audition {
 }
 
 export async function getPerformances(): Promise<Performance[]> {
-  const query = groq`*[_type == "performance"] | order(date desc)`;
+  const query = groq`*[_type == "performance"] | order(date desc) {
+    _id,
+    title,
+    date,
+    location,
+    description,
+    image,
+    recordingUrl
+  }`;
   return client.fetch(query);
 }
 

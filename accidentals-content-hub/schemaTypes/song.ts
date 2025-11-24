@@ -20,5 +20,11 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'member'}]}],
     }),
     defineField({name: 'semesterLearned', title: 'Semester Learned', type: 'string'}),
+    defineField({
+      name: 'recordingUrl',
+      title: 'Recording URL',
+      type: 'url',
+      description: 'Link to listen to this song (e.g., YouTube, Spotify)',
+    }),
   ],
 })
