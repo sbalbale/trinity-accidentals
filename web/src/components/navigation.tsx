@@ -25,7 +25,7 @@ export function Navigation({ data }: NavigationProps) {
   const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0b3c6b] text-white border-b border-gold/20">
+    <nav className="sticky top-0 z-50 bg-card text-card-foreground border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link
           href="/"
@@ -35,7 +35,7 @@ export function Navigation({ data }: NavigationProps) {
           {logoUrl ? (
             <img src={logoUrl} alt="Logo" className="h-8 w-8 object-contain" />
           ) : (
-            <Music className="h-6 w-6 text-gold" />
+            <Music className="h-6 w-6 text-primary" />
           )}
           <span className="font-serif text-xl font-bold">{groupName}</span>
         </Link>
@@ -46,7 +46,7 @@ export function Navigation({ data }: NavigationProps) {
             <Link
               key={link.url}
               href={link.url}
-              className="text-white/70 hover:text-gold transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               {link.title}
             </Link>
@@ -55,7 +55,7 @@ export function Navigation({ data }: NavigationProps) {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white hover:text-gold transition-colors"
+          className="md:hidden text-card-foreground hover:text-primary transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle menu"
         >
@@ -65,12 +65,12 @@ export function Navigation({ data }: NavigationProps) {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-[#0b3c6b] border-b border-gold/20 py-4 px-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2">
+        <div className="md:hidden absolute top-full left-0 w-full bg-card border-b border-border py-4 px-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2">
           {links.map((link) => (
             <Link
               key={link.url}
               href={link.url}
-              className="text-white/70 hover:text-gold transition-colors text-lg py-2"
+              className="text-muted-foreground hover:text-primary transition-colors text-lg py-2"
               onClick={() => setIsOpen(false)}
             >
               {link.title}

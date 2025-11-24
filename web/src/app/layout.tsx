@@ -32,7 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground min-h-screen supports-[min-height:100dvh]:min-h-[100dvh] flex flex-col`}
+        // CHANGED: Replaced 'min-h-screen' with standard and webkit-fill-available fallbacks
+        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground flex flex-col min-h-[100vh] supports-[min-height:-webkit-fill-available]:min-h-[-webkit-fill-available]`}
         suppressHydrationWarning
       >
         <NavbarWrapper />
