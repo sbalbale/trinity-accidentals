@@ -65,30 +65,32 @@ export default function BookingForm() {
       </h3>
 
       <div className="space-y-6">
-        <div className="space-y-2">
-          <Label htmlFor="name" className="text-white">
-            Name / Organization
-          </Label>
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            required
-            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="text-white">
+              Name / Organization
+            </Label>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              required
+              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+            />
+          </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="email" className="text-white">
-            Email Address
-          </Label>
-          <Input
-            type="email"
-            id="email"
-            name="email"
-            required
-            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
-          />
+          <div className="space-y-2">
+            <Label htmlFor="email" className="text-white">
+              Email Address
+            </Label>
+            <Input
+              type="email"
+              id="email"
+              name="email"
+              required
+              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+            />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

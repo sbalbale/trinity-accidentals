@@ -36,38 +36,40 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-white mb-2"
-        >
-          Name *
-        </label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="Your name"
-        />
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label
+            htmlFor="name"
+            className="block text-sm font-medium text-white mb-2"
+          >
+            Name *
+          </label>
+          <Input
+            id="name"
+            name="name"
+            type="text"
+            required
+            className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            placeholder="Your name"
+          />
+        </div>
 
-      <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-white mb-2"
-        >
-          Email *
-        </label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="your.email@example.com"
-        />
+        <div>
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-white mb-2"
+          >
+            Email *
+          </label>
+          <Input
+            id="email"
+            name="email"
+            type="email"
+            required
+            className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            placeholder="your.email@example.com"
+          />
+        </div>
       </div>
 
       <div>
