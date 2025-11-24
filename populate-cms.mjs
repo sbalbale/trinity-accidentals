@@ -172,6 +172,33 @@ async function populateCMS() {
     });
     console.log("✓ Audition Info created:", auditionInfo._id);
 
+    // Create Footer document
+    console.log("\nCreating Footer document...");
+    const footer = await client.create({
+      _type: "footer",
+      copyrightText:
+        "© 2025 Trinity College Accidentals. All rights reserved.",
+      tagline: "A brotherhood of harmony since 1993",
+      socialLinks: [
+        {
+          _type: "object",
+          platform: "instagram",
+          url: "https://www.instagram.com/trinityaccidentals",
+        },
+        {
+          _type: "object",
+          platform: "facebook",
+          url: "https://www.facebook.com/trinityaccidentals",
+        },
+        {
+          _type: "object",
+          platform: "youtube",
+          url: "https://www.youtube.com/@trinityaccidentals",
+        },
+      ],
+    });
+    console.log("✓ Footer created:", footer._id);
+
     console.log("\n✅ All documents created successfully!");
     console.log(
       "\nYou can now view and edit these documents in Sanity Studio at http://localhost:3333"
