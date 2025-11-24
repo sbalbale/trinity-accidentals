@@ -22,7 +22,7 @@ export default function MemberCard({ member }: MemberCardProps) {
       {/* Card */}
       <div
         onClick={() => setIsOpen(true)}
-        className="group cursor-pointer w-full max-w-sm bg-[#0b3c6b] rounded-lg overflow-hidden border border-white/10 hover:border-gold transition-colors"
+        className="group cursor-pointer w-full max-w-sm bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition-colors"
       >
         {/* Image */}
         <div className="relative w-full h-48 md:h-64">
@@ -34,23 +34,23 @@ export default function MemberCard({ member }: MemberCardProps) {
               className="object-cover"
             />
           ) : (
-            <div className="w-full h-full flex items-center justify-center bg-navy text-white/50">
+            <div className="w-full h-full flex items-center justify-center bg-secondary text-muted-foreground">
               No Image
             </div>
           )}
         </div>
         {/* Details */}
         <div className="p-4 text-center space-y-2">
-          <h3 className="font-heading text-xl font-bold text-white">
+          <h3 className="font-heading text-xl font-bold text-foreground">
             {member.name}
           </h3>
           {member.gradYear && (
-            <p className="text-md font-semibold text-gray-400">
+            <p className="text-md font-semibold text-muted-foreground">
               <span className="tracking-wider mr-1">Class of</span>
               {member.gradYear}
             </p>
           )}
-          <p className="font-body text-gold font-semibold text-lg">
+          <p className="font-body text-primary font-semibold text-lg">
             {member.voicePart}
           </p>
         </div>
@@ -58,23 +58,23 @@ export default function MemberCard({ member }: MemberCardProps) {
 
       {/* Modal Dialog for full info */}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="bg-[#0b3c6b] border-gold/20 text-white max-w-2xl">
+        <DialogContent className="bg-card border-primary/20 text-foreground max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="font-serif text-3xl text-gold mb-4">
+            <DialogTitle className="font-serif text-3xl text-primary mb-4">
               {member.name}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                <p className="text-muted-foreground uppercase tracking-wider text-xs mb-1">
                   Voice Part
                 </p>
-                <p className="text-gold font-semibold">{member.voicePart}</p>
+                <p className="text-primary font-semibold">{member.voicePart}</p>
               </div>
               {member.gradYear && (
                 <div>
-                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                  <p className="text-muted-foreground uppercase tracking-wider text-xs mb-1">
                     Class Year
                   </p>
                   <p>{member.gradYear}</p>
@@ -82,7 +82,7 @@ export default function MemberCard({ member }: MemberCardProps) {
               )}
               {member.major && (
                 <div>
-                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                  <p className="text-muted-foreground uppercase tracking-wider text-xs mb-1">
                     Major
                   </p>
                   <p>{member.major}</p>
@@ -90,7 +90,7 @@ export default function MemberCard({ member }: MemberCardProps) {
               )}
               {member.hometown && (
                 <div>
-                  <p className="text-white/60 uppercase tracking-wider text-xs mb-1">
+                  <p className="text-muted-foreground uppercase tracking-wider text-xs mb-1">
                     Hometown
                   </p>
                   <p>{member.hometown}</p>
@@ -98,11 +98,13 @@ export default function MemberCard({ member }: MemberCardProps) {
               )}
             </div>
             {member.bio && (
-              <div className="pt-4 border-t border-white/10">
-                <p className="text-white/60 uppercase tracking-wider text-xs mb-2">
+              <div className="pt-4 border-t border-border">
+                <p className="text-muted-foreground uppercase tracking-wider text-xs mb-2">
                   Biography
                 </p>
-                <p className="text-white/90 leading-relaxed">{member.bio}</p>
+                <p className="text-foreground/90 leading-relaxed">
+                  {member.bio}
+                </p>
               </div>
             )}
           </div>

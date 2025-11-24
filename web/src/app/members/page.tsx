@@ -17,16 +17,16 @@ export default async function MembersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
+    <div className="min-h-screen bg-background flex flex-col flex-grow">
       <Navigation />
 
-      <section className="py-20 bg-[#07294b] flex-grow">
+      <section className="py-20 bg-background flex-grow">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
               Meet the Brothers
             </h1>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Our talented ensemble of singers, each bringing their unique voice
               and energy to the group.
             </p>

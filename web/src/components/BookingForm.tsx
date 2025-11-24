@@ -36,18 +36,18 @@ export default function BookingForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-[#0b3c6b] border border-green-500/30 rounded-lg p-8 text-center">
+      <div className="bg-card border border-green-500/30 rounded-lg p-8 text-center">
         <h3 className="text-2xl font-serif font-bold text-green-400 mb-4">
           Request Sent!
         </h3>
-        <p className="text-white/80">
+        <p className="text-foreground/80">
           Thank you for your interest. We will get back to you shortly to
           discuss your event.
         </p>
         <Button
           variant="link"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-gold hover:text-gold/80"
+          className="mt-6 text-primary hover:text-primary/80"
         >
           Send another request
         </Button>
@@ -58,16 +58,16 @@ export default function BookingForm() {
   return (
     <form
       action={handleSubmit}
-      className="bg-[#0b3c6b] rounded-lg shadow-xl p-8 border border-white/10"
+      className="bg-card rounded-lg shadow-xl p-8 border border-border"
     >
-      <h3 className="text-2xl font-serif font-bold text-white mb-6">
+      <h3 className="text-2xl font-serif font-bold text-foreground mb-6">
         Book the Accidentals
       </h3>
 
       <div className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="name" className="text-white">
+            <Label htmlFor="name" className="text-foreground">
               Name / Organization
             </Label>
             <Input
@@ -75,12 +75,12 @@ export default function BookingForm() {
               id="name"
               name="name"
               required
-              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+              className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:border-ring"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-white">
+            <Label htmlFor="email" className="text-foreground">
               Email Address
             </Label>
             <Input
@@ -88,14 +88,14 @@ export default function BookingForm() {
               id="email"
               name="email"
               required
-              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+              className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:border-ring"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <Label htmlFor="eventType" className="text-white">
+            <Label htmlFor="eventType" className="text-foreground">
               Event Type
             </Label>
             <Input
@@ -104,12 +104,12 @@ export default function BookingForm() {
               name="eventType"
               required
               placeholder="e.g., Wedding, Corporate Event, Concert"
-              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+              className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:border-ring"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="date" className="text-white">
+            <Label htmlFor="date" className="text-foreground">
               Date
             </Label>
             <Input
@@ -117,20 +117,20 @@ export default function BookingForm() {
               id="date"
               name="date"
               required
-              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+              className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:border-ring"
             />
           </div>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="details" className="text-white">
+          <Label htmlFor="details" className="text-foreground">
             Additional Details
           </Label>
           <Textarea
             id="details"
             name="details"
             rows={4}
-            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
+            className="bg-background border-input text-foreground placeholder:text-muted-foreground focus:border-ring"
             placeholder="Tell us more about your event..."
           />
         </div>
@@ -144,7 +144,7 @@ export default function BookingForm() {
         <Button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full bg-gold text-navy hover:bg-gold/90 font-bold py-6 text-lg"
+          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-6 text-lg"
         >
           {status === "submitting" ? "Sending..." : "Submit Request"}
         </Button>

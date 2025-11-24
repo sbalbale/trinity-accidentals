@@ -48,16 +48,16 @@ export default async function AboutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
+    <div className="min-h-screen bg-background flex flex-col flex-grow">
       <Navigation />
 
-      <section className="py-20 bg-[#07294b] flex-grow">
+      <section className="py-20 bg-background flex-grow">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
               {aboutContent.title}
             </h1>
-            <div className="text-lg leading-relaxed text-white/80">
+            <div className="text-lg leading-relaxed text-foreground/80">
               {aboutContent.description ? (
                 <PortableText
                   value={aboutContent.description}
@@ -85,13 +85,13 @@ export default async function AboutPage() {
               return (
                 <Card
                   key={i}
-                  className="p-8 bg-[#0b3c6b] border-2 border-white/10 hover:border-gold transition-colors"
+                  className="p-8 bg-card border-2 border-border hover:border-primary transition-colors"
                 >
-                  <IconComponent className="h-12 w-12 text-gold mb-4" />
-                  <h3 className="font-serif text-2xl font-bold text-white mb-3">
+                  <IconComponent className="h-12 w-12 text-primary mb-4" />
+                  <h3 className="font-serif text-2xl font-bold text-foreground mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </Card>

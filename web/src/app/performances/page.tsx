@@ -20,17 +20,17 @@ export default async function PerformancesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
+    <div className="min-h-screen bg-background flex flex-col flex-grow">
       <Navigation />
 
       <main className="flex-grow">
         {/* Header */}
-        <section className="py-20 bg-[#07294b] text-white">
+        <section className="py-20 bg-background text-foreground">
           <div className="container mx-auto px-4 text-center">
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
               Performances
             </h1>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Catch the Accidentals live in concert or at events around campus.
             </p>
           </div>
@@ -47,11 +47,13 @@ export default async function PerformancesPage() {
           )}
 
           {!error && performances.length === 0 && (
-            <div className="text-center p-12 bg-[#0b3c6b] rounded-lg border border-white/10">
-              <p className="text-xl text-white/80">
+            <div className="text-center p-12 bg-card rounded-lg border border-border">
+              <p className="text-xl text-foreground/80">
                 No upcoming performances scheduled at the moment.
               </p>
-              <p className="mt-2 text-white/60">Check back soon for updates!</p>
+              <p className="mt-2 text-muted-foreground">
+                Check back soon for updates!
+              </p>
             </div>
           )}
 
@@ -59,7 +61,7 @@ export default async function PerformancesPage() {
             {performances.map((perf) => (
               <div
                 key={perf._id}
-                className="bg-[#0b3c6b] rounded-lg overflow-hidden border border-white/10 hover:border-gold transition-colors flex flex-col md:flex-row"
+                className="bg-card rounded-lg overflow-hidden border border-border hover:border-primary transition-colors flex flex-col md:flex-row"
               >
                 {perf.image && (
                   <div className="md:w-1/3 relative h-64 md:h-auto">
@@ -72,7 +74,7 @@ export default async function PerformancesPage() {
                   </div>
                 )}
                 <div className="p-8 flex-1">
-                  <div className="text-sm font-bold text-gold mb-2 uppercase tracking-wide">
+                  <div className="text-sm font-bold text-primary mb-2 uppercase tracking-wide">
                     {new Date(perf.date).toLocaleDateString(undefined, {
                       weekday: "long",
                       year: "numeric",
@@ -82,14 +84,14 @@ export default async function PerformancesPage() {
                       minute: "numeric",
                     })}
                   </div>
-                  <h3 className="text-2xl font-serif font-bold text-white mb-3">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">
                     {perf.title}
                   </h3>
-                  <div className="text-white/70 mb-4 flex items-center">
-                    <MapPin className="w-4 h-4 mr-2 text-gold" />
+                  <div className="text-muted-foreground mb-4 flex items-center">
+                    <MapPin className="w-4 h-4 mr-2 text-primary" />
                     {perf.location}
                   </div>
-                  <div className="prose prose-invert prose-sm max-w-none text-white/80">
+                  <div className="prose prose-invert prose-sm max-w-none text-foreground/80">
                     <PortableText value={perf.description} />
                   </div>
                 </div>
@@ -99,13 +101,13 @@ export default async function PerformancesPage() {
         </section>
 
         {/* Booking Section */}
-        <section className="py-20 bg-[#051d36]">
+        <section className="py-20 bg-muted">
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="text-center mb-12">
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mb-4">
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-4">
                 Hire Us
               </h2>
-              <p className="text-lg text-white/70">
+              <p className="text-lg text-muted-foreground">
                 Want the Accidentals at your next event? Fill out the form below
                 and we'll be in touch!
               </p>

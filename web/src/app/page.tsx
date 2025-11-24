@@ -50,12 +50,12 @@ export default async function Home() {
   const yearsOfLegacy = currentYear - 1993;
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-[#07294b] text-white py-24 md:py-32 overflow-hidden">
+        <section className="relative bg-background text-foreground py-24 md:py-32 overflow-hidden">
           <div className="absolute inset-0 opacity-5">
             <img
               src={
@@ -71,11 +71,11 @@ export default async function Home() {
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-balance">
                 {homeContent.heroTitle.split(" ").slice(0, -1).join(" ")}{" "}
-                <span className="text-gold">
+                <span className="text-primary">
                   {homeContent.heroTitle.split(" ").slice(-1)}
                 </span>
               </h1>
-              <div className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
+              <div className="text-xl md:text-2xl mb-8 text-foreground/90 text-balance">
                 {homeContent.heroSubtitle ? (
                   <PortableText
                     value={homeContent.heroSubtitle}
@@ -92,7 +92,7 @@ export default async function Home() {
                 <Link href="/contact">
                   <Button
                     size="lg"
-                    className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
                   >
                     Book Us
                   </Button>
@@ -101,7 +101,7 @@ export default async function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
                   >
                     Listen Now
                   </Button>
@@ -112,7 +112,7 @@ export default async function Home() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 bg-[#0b3c6b]">
+        <section className="py-16 bg-card">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               {[
@@ -127,10 +127,10 @@ export default async function Home() {
                 },
               ].map((stat, i) => (
                 <div key={i} className="text-center">
-                  <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+                  <div className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-sm md:text-base text-white/70">
+                  <div className="text-sm md:text-base text-muted-foreground">
                     {stat.label}
                   </div>
                 </div>
@@ -140,17 +140,17 @@ export default async function Home() {
         </section>
 
         {/* Featured Performance Section */}
-        <section className="py-20 bg-[#07294b] text-white">
+        <section className="py-20 bg-background text-foreground">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
                   {homeContent.featuredTitle.split(" ").slice(0, -1).join(" ")}{" "}
-                  <span className="text-gold">
+                  <span className="text-primary">
                     {homeContent.featuredTitle.split(" ").slice(-1)}
                   </span>
                 </h2>
-                <div className="text-lg leading-relaxed text-white/80 mb-8">
+                <div className="text-lg leading-relaxed text-foreground/80 mb-8">
                   {homeContent.featuredDescription ? (
                     <PortableText
                       value={homeContent.featuredDescription}
@@ -169,13 +169,13 @@ export default async function Home() {
                 <Link href="/performances">
                   <Button
                     size="lg"
-                    className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
                   >
                     View Performance Schedule
                   </Button>
                 </Link>
               </div>
-              <div className="relative aspect-video bg-light-gray/10 rounded-lg overflow-hidden">
+              <div className="relative aspect-video bg-muted/10 rounded-lg overflow-hidden">
                 <img
                   src={
                     homeContent.featuredImage

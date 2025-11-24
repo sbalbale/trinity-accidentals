@@ -37,16 +37,16 @@ export default async function AuditionsPage() {
   const faqs = auditionInfo?.faqs || fallbackFaqs;
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
+    <div className="min-h-screen bg-background flex flex-col flex-grow">
       <Navigation />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="py-20 bg-[#07294b] text-white text-center">
+        <section className="py-20 bg-background text-foreground text-center">
           <div className="container mx-auto px-4">
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
               {auditionInfo?.title || "Join the Brotherhood"}
             </h1>
-            <div className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
+            <div className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto">
               {auditionInfo?.description ? (
                 <PortableText
                   value={auditionInfo.description}
@@ -60,12 +60,12 @@ export default async function AuditionsPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16 bg-[#051d36]">
+        <section className="py-16 bg-muted">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="font-serif text-3xl font-bold text-white mb-8 text-center">
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-8 text-center">
               Frequently Asked Questions
             </h2>
-            <div className="bg-[#0b3c6b] rounded-lg shadow-md p-8 border border-white/10">
+            <div className="bg-card rounded-lg shadow-md p-8 border border-border">
               {faqs.map((faq, index) => (
                 <FAQItem
                   key={index}
@@ -78,15 +78,15 @@ export default async function AuditionsPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-20 bg-[#07294b] text-center">
+        <section className="py-20 bg-background text-center">
           <div className="container mx-auto px-4">
-            <h2 className="font-serif text-3xl font-bold text-white mb-6">
+            <h2 className="font-serif text-3xl font-bold text-foreground mb-6">
               Ready to Join Us?
             </h2>
             <Button
               asChild
               size="lg"
-              className="bg-gold text-navy hover:bg-gold/90 font-bold text-xl px-12 py-8 h-auto rounded-lg shadow-xl"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xl px-12 py-8 h-auto rounded-lg shadow-xl"
             >
               <Link
                 href={

@@ -40,7 +40,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-white mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Name *
           </label>
@@ -49,7 +49,7 @@ export default function ContactForm() {
             name="name"
             type="text"
             required
-            className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            className="bg-input border-input text-foreground placeholder:text-muted-foreground"
             placeholder="Your name"
           />
         </div>
@@ -57,7 +57,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-white mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Email *
           </label>
@@ -66,7 +66,7 @@ export default function ContactForm() {
             name="email"
             type="email"
             required
-            className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+            className="bg-input border-input text-foreground placeholder:text-muted-foreground"
             placeholder="your.email@example.com"
           />
         </div>
@@ -75,7 +75,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="eventType"
-          className="block text-sm font-medium text-white mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Event Type *
         </label>
@@ -84,7 +84,7 @@ export default function ContactForm() {
           name="eventType"
           type="text"
           required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+          className="bg-input border-input text-foreground placeholder:text-muted-foreground"
           placeholder="e.g., Wedding, Corporate Event, Concert"
         />
       </div>
@@ -92,7 +92,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="date"
-          className="block text-sm font-medium text-white mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Preferred Date *
         </label>
@@ -101,14 +101,14 @@ export default function ContactForm() {
           name="date"
           type="date"
           required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+          className="bg-input border-input text-foreground placeholder:text-muted-foreground"
         />
       </div>
 
       <div>
         <label
           htmlFor="details"
-          className="block text-sm font-medium text-white mb-2"
+          className="block text-sm font-medium text-foreground mb-2"
         >
           Additional Details
         </label>
@@ -116,7 +116,7 @@ export default function ContactForm() {
           id="details"
           name="details"
           rows={4}
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+          className="bg-input border-input text-foreground placeholder:text-muted-foreground"
           placeholder="Tell us more about your event..."
         />
       </div>
@@ -136,7 +136,7 @@ export default function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gold text-navy hover:bg-gold/90 font-semibold"
+        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
         size="lg"
       >
         {isSubmitting ? "Sending..." : "Send Message"}

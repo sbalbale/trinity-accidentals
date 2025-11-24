@@ -17,10 +17,10 @@ export default async function RepertoirePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07294b] flex flex-col flex-grow">
+    <div className="min-h-screen bg-background flex flex-col flex-grow">
       <Navigation />
       <main className="py-20 px-8 max-w-7xl mx-auto flex-grow">
-        <h1 className="text-5xl font-serif font-bold mb-12 text-center text-white">
+        <h1 className="text-5xl font-serif font-bold mb-12 text-center text-foreground">
           Our Repertoire
         </h1>
 
@@ -29,7 +29,7 @@ export default async function RepertoirePage() {
             <p className="text-red-400 mb-4 font-semibold">
               Error loading songs: {error}
             </p>
-            <p className="text-sm text-white/60">
+            <p className="text-sm text-muted-foreground">
               Make sure your Sanity project is configured correctly and the
               .env.local file contains valid credentials.
             </p>
@@ -37,13 +37,13 @@ export default async function RepertoirePage() {
         )}
 
         {!error && songs.length === 0 && (
-          <div className="text-center p-8 bg-[#0b3c6b] border border-white/10 rounded-lg max-w-2xl mx-auto">
-            <p className="text-lg mb-4 text-white">No songs found</p>
-            <p className="text-sm text-white/60">
+          <div className="text-center p-8 bg-card border border-border rounded-lg max-w-2xl mx-auto">
+            <p className="text-lg mb-4 text-foreground">No songs found</p>
+            <p className="text-sm text-muted-foreground">
               Add songs in the Sanity Studio at{" "}
               <a
                 href="http://localhost:3333"
-                className="text-gold underline font-semibold"
+                className="text-primary underline font-semibold"
               >
                 http://localhost:3333
               </a>
