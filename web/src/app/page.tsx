@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { getSiteStats } from "@/lib/sanity";
+import { getSiteStats, getHomePage } from "@/lib/sanity";
+import { urlFor } from "@/lib/sanity";
+import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "@/components/portable-text";
 
 export const revalidate = 60;
 
@@ -12,13 +15,30 @@ export default async function Home() {
     currentMembersCount: 15,
   }; // Fallback values
 
+  let homeContent: any = {
+    heroTitle: "The Trinity College Accidentals",
+    heroSubtitle: null,
+    featuredTitle: "Experience the Harmony",
+    featuredDescription: null,
+  };
+
   try {
     const fetchedStats = await getSiteStats();
     if (fetchedStats) {
       stats = fetchedStats;
     }
+
+    const fetchedHome = await getHomePage();
+    if (fetchedHome) {
+      homeContent = {
+        heroTitle: fetchedHome.heroTitle,
+        heroSubtitle: fetchedHome.heroSubtitle,
+        featuredTitle: fetchedHome.featuredTitle,
+        featuredDescription: fetchedHome.featuredDescription,
+      };
+    }
   } catch (e) {
-    console.error("Error fetching stats:", e);
+    console.error("Error fetching content:", e);
   }
 
   const currentYear = new Date().getFullYear();
@@ -34,12 +54,24 @@ export default async function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-balance">
-              The Trinity College <span className="text-gold">Accidentals</span>
+              {homeContent.heroTitle.split(" ").slice(0, -1).join(" ")}{" "}
+              <span className="text-gold">
+                {homeContent.heroTitle.split(" ").slice(-1)}
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
-              A brotherhood united by harmony, tradition, and excellence in
-              collegiate a cappella
-            </p>
+            <div className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
+              {homeContent.heroSubtitle ? (
+                <PortableText
+                  value={homeContent.heroSubtitle}
+                  components={portableTextComponents}
+                />
+              ) : (
+                <p>
+                  A brotherhood united by harmony, tradition, and excellence in
+                  collegiate a cappella
+                </p>
+              )}
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
@@ -91,15 +123,27 @@ export default async function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
-                Experience the <span className="text-gold">Harmony</span>
+                {homeContent.featuredTitle.split(" ").slice(0, -1).join(" ")}{" "}
+                <span className="text-gold">
+                  {homeContent.featuredTitle.split(" ").slice(-1)}
+                </span>
               </h2>
-              <p className="text-lg leading-relaxed text-white/80 mb-8">
-                From intimate campus concerts to regional competitions, the
-                Accidentals deliver powerful performances that showcase our
-                tight harmonies, dynamic stage presence, and passion for a
-                cappella music. Every show is a celebration of our brotherhood
-                and musical journey.
-              </p>
+              <div className="text-lg leading-relaxed text-white/80 mb-8">
+                {homeContent.featuredDescription ? (
+                  <PortableText
+                    value={homeContent.featuredDescription}
+                    components={portableTextComponents}
+                  />
+                ) : (
+                  <p>
+                    From intimate campus concerts to regional competitions, the
+                    Accidentals deliver powerful performances that showcase our
+                    tight harmonies, dynamic stage presence, and passion for a
+                    cappella music. Every show is a celebration of our
+                    brotherhood and musical journey.
+                  </p>
+                )}
+              </div>
               <Button
                 size="lg"
                 className="bg-gold text-navy hover:bg-gold/90 font-semibold"

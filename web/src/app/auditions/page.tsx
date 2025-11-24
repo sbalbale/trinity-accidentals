@@ -4,6 +4,7 @@ import FAQItem from "@/components/FAQItem";
 import Link from "next/link";
 import { getAuditionInfo, Audition } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
+import { portableTextComponents } from "@/components/portable-text";
 import { Button } from "@/components/ui/button";
 
 export const revalidate = 60;
@@ -45,9 +46,12 @@ export default async function AuditionsPage() {
             <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
               {auditionInfo?.title || "Join the Brotherhood"}
             </h1>
-            <div className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto prose prose-invert">
+            <div className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
               {auditionInfo?.description ? (
-                <PortableText value={auditionInfo.description} />
+                <PortableText
+                  value={auditionInfo.description}
+                  components={portableTextComponents}
+                />
               ) : (
                 <p>Auditions are held at the beginning of every semester.</p>
               )}

@@ -119,3 +119,31 @@ export async function getSiteStats(): Promise<SiteStats> {
   }`;
   return client.fetch(query);
 }
+
+export interface HomePage {
+  heroTitle: string;
+  heroSubtitle: any; // block content
+  heroImage?: any;
+  featuredTitle: string;
+  featuredDescription: any; // block content
+  featuredImage?: any;
+}
+
+export async function getHomePage(): Promise<HomePage | null> {
+  const query = groq`*[_type == "homePage"][0]`;
+  return client.fetch(query);
+}
+
+export interface AboutPage {
+  title: string;
+  description: any; // block content
+  values?: Array<{
+    title: string;
+    description: string;
+  }>;
+}
+
+export async function getAboutPage(): Promise<AboutPage | null> {
+  const query = groq`*[_type == "aboutPage"][0]`;
+  return client.fetch(query);
+}

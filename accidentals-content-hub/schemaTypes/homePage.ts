@@ -14,9 +14,7 @@ export default defineType({
     defineField({
       name: 'heroSubtitle',
       title: 'Hero Subtitle',
-      type: 'text',
-      initialValue:
-        'A brotherhood united by harmony, tradition, and excellence in collegiate a cappella',
+      type: 'blockContent',
     }),
     defineField({
       name: 'heroImage',
@@ -35,9 +33,7 @@ export default defineType({
     defineField({
       name: 'featuredDescription',
       title: 'Featured Section Description',
-      type: 'text',
-      initialValue:
-        'From intimate campus concerts to regional competitions, the Accidentals deliver powerful performances that showcase our tight harmonies, dynamic stage presence, and passion for a cappella music. Every show is a celebration of our brotherhood and musical journey.',
+      type: 'blockContent',
     }),
     defineField({
       name: 'featuredImage',
