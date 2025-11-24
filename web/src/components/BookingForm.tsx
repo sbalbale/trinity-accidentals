@@ -2,6 +2,17 @@
 
 import { useState } from "react";
 import { sendBookingEmail } from "@/app/actions";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
 
 export default function BookingForm() {
   const [status, setStatus] = useState<
@@ -25,132 +36,120 @@ export default function BookingForm() {
 
   if (status === "success") {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
-        <h3 className="text-2xl font-heading font-bold text-green-800 mb-4">
+      <div className="bg-[#0b3c6b] border border-green-500/30 rounded-lg p-8 text-center">
+        <h3 className="text-2xl font-serif font-bold text-green-400 mb-4">
           Request Sent!
         </h3>
-        <p className="text-green-700">
+        <p className="text-white/80">
           Thank you for your interest. We will get back to you shortly to
           discuss your event.
         </p>
-        <button
+        <Button
+          variant="link"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-trinityMaroon underline hover:text-red-900"
+          className="mt-6 text-gold hover:text-gold/80"
         >
           Send another request
-        </button>
+        </Button>
       </div>
     );
   }
 
   return (
-    <form action={handleSubmit} className="bg-white rounded-lg shadow-xl p-8">
-      <h3 className="text-2xl font-heading font-bold text-trinityMaroon mb-6">
+    <form
+      action={handleSubmit}
+      className="bg-[#0b3c6b] rounded-lg shadow-xl p-8 border border-white/10"
+    >
+      <h3 className="text-2xl font-serif font-bold text-white mb-6">
         Book the Accidentals
       </h3>
 
-      <div className="space-y-4">
-        <div>
-          <label
-            htmlFor="name"
-            className="block text-sm font-bold text-gray-700 mb-1"
-          >
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <Label htmlFor="name" className="text-white">
             Name / Organization
-          </label>
-          <input
+          </Label>
+          <Input
             type="text"
             id="name"
             name="name"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-trinityMaroon focus:border-trinityMaroon"
+            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
           />
         </div>
 
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-bold text-gray-700 mb-1"
-          >
+        <div className="space-y-2">
+          <Label htmlFor="email" className="text-white">
             Email Address
-          </label>
-          <input
+          </Label>
+          <Input
             type="email"
             id="email"
             name="email"
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-trinityMaroon focus:border-trinityMaroon"
+            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label
-              htmlFor="eventType"
-              className="block text-sm font-bold text-gray-700 mb-1"
-            >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="eventType" className="text-white">
               Event Type
-            </label>
-            <select
-              id="eventType"
-              name="eventType"
-              required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-trinityMaroon focus:border-trinityMaroon"
-            >
-              <option value="">Select an event type</option>
-              <option value="Wedding">Wedding</option>
-              <option value="Corporate Event">Corporate Event</option>
-              <option value="Private Party">Private Party</option>
-              <option value="Concert">Concert</option>
-              <option value="Other">Other</option>
-            </select>
+            </Label>
+            <Select name="eventType" required>
+              <SelectTrigger className="bg-[#07294b] border-white/20 text-white focus:border-gold">
+                <SelectValue placeholder="Select an event type" />
+              </SelectTrigger>
+              <SelectContent className="bg-[#07294b] border-white/20 text-white">
+                <SelectItem value="Wedding">Wedding</SelectItem>
+                <SelectItem value="Corporate Event">Corporate Event</SelectItem>
+                <SelectItem value="Private Party">Private Party</SelectItem>
+                <SelectItem value="Concert">Concert</SelectItem>
+                <SelectItem value="Other">Other</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
 
-          <div>
-            <label
-              htmlFor="date"
-              className="block text-sm font-bold text-gray-700 mb-1"
-            >
+          <div className="space-y-2">
+            <Label htmlFor="date" className="text-white">
               Date
-            </label>
-            <input
+            </Label>
+            <Input
               type="date"
               id="date"
               name="date"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-trinityMaroon focus:border-trinityMaroon"
+              className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
             />
           </div>
         </div>
 
-        <div>
-          <label
-            htmlFor="details"
-            className="block text-sm font-bold text-gray-700 mb-1"
-          >
+        <div className="space-y-2">
+          <Label htmlFor="details" className="text-white">
             Additional Details
-          </label>
-          <textarea
+          </Label>
+          <Textarea
             id="details"
             name="details"
             rows={4}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-trinityMaroon focus:border-trinityMaroon"
+            className="bg-[#07294b] border-white/20 text-white placeholder:text-white/40 focus:border-gold"
             placeholder="Tell us more about your event..."
-          ></textarea>
+          />
         </div>
 
         {status === "error" && (
-          <div className="text-red-600 text-sm bg-red-50 p-3 rounded-md">
+          <div className="text-red-400 text-sm bg-red-900/20 p-3 rounded-md border border-red-500/20">
             {errorMessage || "Something went wrong. Please try again."}
           </div>
         )}
 
-        <button
+        <Button
           type="submit"
           disabled={status === "submitting"}
-          className="w-full bg-trinityMaroon text-white font-bold py-3 px-6 rounded-lg hover:bg-red-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gold text-navy hover:bg-gold/90 font-bold py-6 text-lg"
         >
           {status === "submitting" ? "Sending..." : "Submit Request"}
-        </button>
+        </Button>
       </div>
     </form>
   );

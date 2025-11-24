@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import { Navigation } from "@/components/navigation";
 
 export default function TestPage() {
   const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
@@ -6,7 +6,7 @@ export default function TestPage() {
 
   return (
     <>
-      <Navbar />
+      <Navigation />
       <main className="p-8 max-w-4xl mx-auto">
         <h1 className="text-3xl font-heading mb-6">Environment Test</h1>
 

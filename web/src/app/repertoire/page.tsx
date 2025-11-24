@@ -1,6 +1,7 @@
 import { getSongs, Song } from "@/lib/sanity";
 import SongCard from "@/components/SongCard";
-import Navbar from "@/components/Navbar";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 
 export const revalidate = 60;
 
@@ -16,17 +17,19 @@ export default async function RepertoirePage() {
   }
 
   return (
-    <>
-      <Navbar />
-      <main className="font-body py-12 px-8 max-w-7xl mx-auto">
-        <h1 className="text-5xl font-heading font-bold mb-12 text-center text-trinityMaroon">
+    <div className="min-h-screen bg-[#07294b]">
+      <Navigation />
+      <main className="py-12 px-8 max-w-7xl mx-auto">
+        <h1 className="text-5xl font-serif font-bold mb-12 text-center text-white">
           Our Repertoire
         </h1>
 
         {error && (
-          <div className="text-center p-8 bg-red-50 border border-red-200 rounded-lg max-w-2xl mx-auto">
-            <p className="text-red-600 mb-4 font-semibold">Error loading songs: {error}</p>
-            <p className="text-sm text-gray-600">
+          <div className="text-center p-8 bg-red-900/20 border border-red-500/50 rounded-lg max-w-2xl mx-auto">
+            <p className="text-red-400 mb-4 font-semibold">
+              Error loading songs: {error}
+            </p>
+            <p className="text-sm text-white/60">
               Make sure your Sanity project is configured correctly and the
               .env.local file contains valid credentials.
             </p>
@@ -34,13 +37,13 @@ export default async function RepertoirePage() {
         )}
 
         {!error && songs.length === 0 && (
-          <div className="text-center p-8 bg-blue-50 border border-blue-200 rounded-lg max-w-2xl mx-auto">
-            <p className="text-lg mb-4">No songs found</p>
-            <p className="text-sm text-gray-600">
+          <div className="text-center p-8 bg-[#0b3c6b] border border-white/10 rounded-lg max-w-2xl mx-auto">
+            <p className="text-lg mb-4 text-white">No songs found</p>
+            <p className="text-sm text-white/60">
               Add songs in the Sanity Studio at{" "}
               <a
                 href="http://localhost:3333"
-                className="text-trinity-blue underline font-semibold"
+                className="text-gold underline font-semibold"
               >
                 http://localhost:3333
               </a>
@@ -56,6 +59,7 @@ export default async function RepertoirePage() {
           </div>
         )}
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }

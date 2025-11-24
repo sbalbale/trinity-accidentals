@@ -1,8 +1,29 @@
-import { Button } from "@/components/ui/button"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
+import { Button } from "@/components/ui/button";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
+import { getSiteStats } from "@/lib/sanity";
 
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  let stats = {
+    membersCount: 15,
+    performancesCount: 500,
+    currentMembersCount: 15,
+  }; // Fallback values
+
+  try {
+    const fetchedStats = await getSiteStats();
+    if (fetchedStats) {
+      stats = fetchedStats;
+    }
+  } catch (e) {
+    console.error("Error fetching stats:", e);
+  }
+
+  const currentYear = new Date().getFullYear();
+  const yearsOfLegacy = currentYear - 1993;
+
   return (
     <div className="min-h-screen bg-[#07294b]">
       <Navigation />
@@ -16,10 +37,14 @@ export default function Home() {
               The Trinity College <span className="text-gold">Accidentals</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 text-balance">
-              A brotherhood united by harmony, tradition, and excellence in collegiate a cappella
+              A brotherhood united by harmony, tradition, and excellence in
+              collegiate a cappella
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gold text-navy hover:bg-gold/90 font-semibold">
+              <Button
+                size="lg"
+                className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+              >
                 Book Us
               </Button>
               <Button
@@ -39,14 +64,21 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "75+", label: "Years of Legacy" },
-              { number: "500+", label: "Performances" },
-              { number: "15", label: "Active Members" },
+              { number: `${yearsOfLegacy}+`, label: "Years of Legacy" },
+              { number: `${stats.performancesCount}+`, label: "Performances" },
+              {
+                number: `${stats.currentMembersCount}`,
+                label: "Active Members",
+              },
               { number: "12", label: "Albums Released" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">{stat.number}</div>
-                <div className="text-sm md:text-base text-white/70">{stat.label}</div>
+                <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-sm md:text-base text-white/70">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -62,11 +94,16 @@ export default function Home() {
                 Experience the <span className="text-gold">Harmony</span>
               </h2>
               <p className="text-lg leading-relaxed text-white/80 mb-8">
-                From intimate campus concerts to regional competitions, the Accidentals deliver powerful performances
-                that showcase our tight harmonies, dynamic stage presence, and passion for a cappella music. Every show
-                is a celebration of our brotherhood and musical journey.
+                From intimate campus concerts to regional competitions, the
+                Accidentals deliver powerful performances that showcase our
+                tight harmonies, dynamic stage presence, and passion for a
+                cappella music. Every show is a celebration of our brotherhood
+                and musical journey.
               </p>
-              <Button size="lg" className="bg-gold text-navy hover:bg-gold/90 font-semibold">
+              <Button
+                size="lg"
+                className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+              >
                 View Performance Schedule
               </Button>
             </div>
@@ -83,5 +120,5 @@ export default function Home() {
 
       <Footer />
     </div>
-  )
+  );
 }

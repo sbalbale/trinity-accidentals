@@ -1,4 +1,4 @@
-import { createClient } from "next-sanity";
+import { createClient, groq } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
@@ -57,7 +57,7 @@ export async function getMembers(): Promise<Member[]> {
     gradYear,
     image
   }`;
-  
+
   return client.fetch(query);
 }
 
@@ -71,6 +71,51 @@ export async function getSongs(): Promise<Song[]> {
     arrangers[]->{name},
     semesterLearned
   }`;
-  
+
+  return client.fetch(query);
+}
+
+export interface Performance {
+  _id: string;
+  title: string;
+  date: string;
+  location: string;
+  description: any;
+  image: any;
+}
+
+export interface Audition {
+  _id: string;
+  title: string;
+  description: any;
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
+  signupLink: string;
+}
+
+export async function getPerformances(): Promise<Performance[]> {
+  const query = groq`*[_type == "performance"] | order(date desc)`;
+  return client.fetch(query);
+}
+
+export async function getAuditionInfo(): Promise<Audition> {
+  const query = groq`*[_type == "audition"][0]`;
+  return client.fetch(query);
+}
+
+export interface SiteStats {
+  membersCount: number;
+  performancesCount: number;
+  currentMembersCount: number;
+}
+
+export async function getSiteStats(): Promise<SiteStats> {
+  const query = groq`{
+    "membersCount": count(*[_type == "member"]),
+    "performancesCount": count(*[_type == "performance"]),
+    "currentMembersCount": count(*[_type == "member" && isActive == true])
+  }`;
   return client.fetch(query);
 }

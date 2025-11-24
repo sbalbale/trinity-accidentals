@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 interface FAQItemProps {
   question: string;
@@ -11,34 +12,22 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 py-4">
+    <div className="border-b border-white/10 last:border-0 py-4">
       <button
+        className="w-full flex justify-between items-center text-left focus:outline-none group"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center text-left"
       >
-        <h3 className="font-heading text-lg font-semibold text-trinityMaroon">
+        <span className="text-lg font-bold text-white group-hover:text-gold transition-colors">
           {question}
-        </h3>
-        <svg
-          className={`w-5 h-5 text-trinityMaroon transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        </span>
+        {isOpen ? (
+          <ChevronUp className="w-5 h-5 text-gold" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-white/50 group-hover:text-gold" />
+        )}
       </button>
       {isOpen && (
-        <p className="font-body text-gray-700 mt-3 leading-relaxed">
-          {answer}
-        </p>
+        <div className="mt-2 text-white/70 leading-relaxed">{answer}</div>
       )}
     </div>
   );

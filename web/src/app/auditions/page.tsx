@@ -1,9 +1,24 @@
-import Navbar from "@/components/Navbar";
+import { Navigation } from "@/components/navigation";
+import { Footer } from "@/components/footer";
 import FAQItem from "@/components/FAQItem";
 import Link from "next/link";
+import { getAuditionInfo, Audition } from "@/lib/sanity";
+import { PortableText } from "@portabletext/react";
+import { Button } from "@/components/ui/button";
 
-export default function AuditionsPage() {
-  const faqs = [
+export const revalidate = 60;
+
+export default async function AuditionsPage() {
+  let auditionInfo: Audition | null = null;
+
+  try {
+    auditionInfo = await getAuditionInfo();
+  } catch (e) {
+    console.error("Error fetching audition info:", e);
+  }
+
+  // Fallback data if Sanity fetch fails or no document exists
+  const fallbackFaqs = [
     {
       question: "Do I need to read music?",
       answer: "It helps, but it is not required. We test for ear and pitch.",
@@ -18,27 +33,35 @@ export default function AuditionsPage() {
     },
   ];
 
+  const faqs = auditionInfo?.faqs || fallbackFaqs;
+
   return (
-    <>
-      <Navbar />
-      <main className="font-body">
+    <div className="min-h-screen bg-[#07294b]">
+      <Navigation />
+      <main>
         {/* Hero Section */}
-        <section className="bg-white py-20 px-8 text-center">
-          <h1 className="font-heading text-5xl md:text-6xl font-bold text-trinityMaroon mb-6">
-            Join the Brotherhood
-          </h1>
-          <p className="font-body text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto">
-            Auditions are held at the beginning of every semester.
-          </p>
+        <section className="py-20 bg-[#07294b] text-white text-center">
+          <div className="container mx-auto px-4">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-6">
+              {auditionInfo?.title || "Join the Brotherhood"}
+            </h1>
+            <div className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto prose prose-invert">
+              {auditionInfo?.description ? (
+                <PortableText value={auditionInfo.description} />
+              ) : (
+                <p>Auditions are held at the beginning of every semester.</p>
+              )}
+            </div>
+          </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-gray-50 py-16 px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="font-heading text-4xl font-bold text-trinityMaroon mb-8 text-center">
+        <section className="py-16 bg-[#051d36]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="font-serif text-3xl font-bold text-white mb-8 text-center">
               Frequently Asked Questions
             </h2>
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="bg-[#0b3c6b] rounded-lg shadow-md p-8 border border-white/10">
               {faqs.map((faq, index) => (
                 <FAQItem
                   key={index}
@@ -51,20 +74,31 @@ export default function AuditionsPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="bg-white py-20 px-8 text-center">
-          <h2 className="font-heading text-3xl font-bold text-trinityMaroon mb-6">
-            Ready to Join Us?
-          </h2>
-          <Link
-            href="https://forms.google.com/placeholder"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-trinityMaroon text-white font-body font-bold text-xl px-12 py-4 rounded-lg hover:bg-red-900 transition-all transform hover:scale-105 shadow-xl"
-          >
-            Sign Up for Auditions
-          </Link>
+        <section className="py-20 bg-[#07294b] text-center">
+          <div className="container mx-auto px-4">
+            <h2 className="font-serif text-3xl font-bold text-white mb-6">
+              Ready to Join Us?
+            </h2>
+            <Button
+              asChild
+              size="lg"
+              className="bg-gold text-navy hover:bg-gold/90 font-bold text-xl px-12 py-8 h-auto rounded-lg shadow-xl"
+            >
+              <Link
+                href={
+                  auditionInfo?.signupLink ||
+                  "https://forms.google.com/placeholder"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sign Up for Auditions
+              </Link>
+            </Button>
+          </div>
         </section>
       </main>
-    </>
+      <Footer />
+    </div>
   );
 }
