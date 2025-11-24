@@ -150,3 +150,17 @@ export async function getAboutPage(): Promise<AboutPage | null> {
   const query = groq`*[_type == "aboutPage"][0]`;
   return client.fetch(query);
 }
+
+export interface FooterData {
+  copyrightText: string;
+  tagline: string;
+  socialLinks?: Array<{
+    platform: string;
+    url: string;
+  }>;
+}
+
+export async function getFooter(): Promise<FooterData | null> {
+  const query = groq`*[_type == "footer"][0]`;
+  return client.fetch(query);
+}

@@ -8,6 +8,7 @@ import post from './post'
 import song from './song'
 import homePage from './homePage'
 import aboutPage from './aboutPage'
+import footer from './footer'
 
 export const schemaTypes = [
   post,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   audition,
   homePage,
   aboutPage,
+  footer,
 ]
