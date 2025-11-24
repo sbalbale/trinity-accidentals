@@ -123,6 +123,87 @@ npm run deploy:studio
 
 ---
 
+## 🐳 Docker Deployment
+
+This project includes Docker configuration for the **web application only**. The Sanity Studio is best run locally or deployed via Sanity's hosting.
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+- Node.js (for running Sanity Studio locally)
+
+### Environment Setup
+
+Create a `.env` file in the root directory with your Sanity credentials:
+
+```bash
+NEXT_PUBLIC_SANITY_PROJECT_ID=ig0le6uy
+NEXT_PUBLIC_SANITY_DATASET=production
+SANITY_API_TOKEN=your_token_here
+```
+
+### Running the Application
+
+**Option 1: Docker for Web + Local Studio (Recommended)**
+
+Terminal 1 - Web app in Docker:
+
+```bash
+docker-compose up --build
+```
+
+Access at: **http://localhost:3000**
+
+Terminal 2 - Sanity Studio locally:
+
+```bash
+npm run dev:studio
+```
+
+Access at: **http://localhost:3333**
+
+**Option 2: All Local (No Docker)**
+
+Terminal 1:
+
+```bash
+npm run dev:web
+```
+
+Terminal 2:
+
+```bash
+npm run dev:studio
+```
+
+### Production Deployment
+
+**Web App:**
+
+```bash
+# Build the Docker image
+docker build -f Dockerfile.web \
+  --build-arg NEXT_PUBLIC_SANITY_PROJECT_ID=your_id \
+  --build-arg NEXT_PUBLIC_SANITY_DATASET=production \
+  -t trinity-web .
+
+# Run the container
+docker run -p 3000:3000 \
+  -e NEXT_PUBLIC_SANITY_PROJECT_ID=your_id \
+  -e NEXT_PUBLIC_SANITY_DATASET=production \
+  trinity-web
+```
+
+**Sanity Studio:**
+
+```bash
+# Deploy to Sanity's hosting
+npm run deploy:studio
+```
+
+---
+
 ## 🛡️ Maintenance & Handoff (The "SFTB" Protocol)
 
 **To the future Webmaster (Class of '28, '29, and beyond):**
