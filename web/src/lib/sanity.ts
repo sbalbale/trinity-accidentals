@@ -122,13 +122,15 @@ export interface SiteStats {
   membersCount: number;
   performancesCount: number;
   currentMembersCount: number;
+  songsCount: number;
 }
 
 export async function getSiteStats(): Promise<SiteStats> {
   const query = groq`{
     "membersCount": count(*[_type == "member"]),
     "performancesCount": count(*[_type == "performance"]),
-    "currentMembersCount": count(*[_type == "member" && isActive == true])
+    "currentMembersCount": count(*[_type == "member" && isActive == true]),
+    "songsCount": count(*[_type == "song"])
   }`;
   return client.fetch(query);
 }

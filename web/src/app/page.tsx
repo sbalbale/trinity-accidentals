@@ -13,6 +13,7 @@ export default async function Home() {
     membersCount: 15,
     performancesCount: 500,
     currentMembersCount: 15,
+    songsCount: 100,
   }; // Fallback values
 
   let homeContent: any = {
@@ -110,7 +111,7 @@ export default async function Home() {
       {/* Stats Section */}
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { number: `${yearsOfLegacy}`, label: "Years of Legacy" },
               {
@@ -120,6 +121,10 @@ export default async function Home() {
               {
                 number: `${stats.currentMembersCount}`,
                 label: "Active Members",
+              },
+              {
+                number: `${stats.songsCount}+`,
+                label: "Songs in Repertoire",
               },
             ].map((stat, i) => (
               <div key={i} className="text-center">
