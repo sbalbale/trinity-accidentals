@@ -20,5 +20,7 @@ export default defineType({
     {name: 'bio', title: 'Biography', type: 'text'},
     {name: 'image', title: 'Headshot', type: 'image'},
     {name: 'isActive', title: 'Current Member?', type: 'boolean'},
+    {name: 'phone', title: 'Phone Number', type: 'string'},
+    {name: 'email', title: 'Email Address', type: 'string'},
   ],
 })

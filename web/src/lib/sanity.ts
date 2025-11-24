@@ -50,7 +50,7 @@ export interface Song {
 
 // GROQ query to fetch members, sorted by voicePart then name
 export async function getMembers(): Promise<Member[]> {
-  const query = `*[_type == "member"] | order(voicePart asc, name asc) {
+  const query = `*[_type == "member" && isActive == true] | order(voicePart asc, name asc) {
     _id,
     name,
     voicePart,

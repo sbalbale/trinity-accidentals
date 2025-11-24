@@ -17,8 +17,8 @@ export async function sendBookingEmail(formData: FormData) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "Trinity Accidentals <onboarding@resend.dev>", // Update this with your verified domain
-      to: ["trinityaccidentals@gmail.com"], // Update this to the actual recipient
+      from: "Trinity Accidentals <contact@trinityaccidentals.com>", // Update this with your verified domain
+      to: ["trindents@gmail.com"], // Update this to the actual recipient
       subject: `New Performance Request: ${eventType}`,
       text: `
         Name: ${name}
