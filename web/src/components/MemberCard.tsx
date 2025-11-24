@@ -22,7 +22,7 @@ export default function MemberCard({ member }: MemberCardProps) {
       {/* Card */}
       <div
         onClick={() => setIsOpen(true)}
-        className="group cursor-pointer w-64 bg-[#0b3c6b] rounded-lg overflow-hidden border border-white/10 hover:border-gold transition-colors"
+        className="group cursor-pointer w-full max-w-sm bg-[#0b3c6b] rounded-lg overflow-hidden border border-white/10 hover:border-gold transition-colors"
       >
         {/* Image */}
         <div className="relative w-full h-48 md:h-64">
