@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import * as LucideIcons from "lucide-react";
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { getAboutPage } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
@@ -49,7 +48,6 @@ export default async function AboutPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
-      <Navigation />
 
       <section className="py-20 bg-background flex-grow">
         <div className="container mx-auto px-4">

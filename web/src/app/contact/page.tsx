@@ -1,11 +1,9 @@
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import ContactForm from "@/components/contact-form";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
-      <Navigation />
 
       <section className="py-20 bg-background text-foreground flex-grow">
         <div className="container mx-auto px-4">
