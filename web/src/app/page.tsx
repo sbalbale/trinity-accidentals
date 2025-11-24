@@ -51,7 +51,7 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* <Navigation /> */}
+      <Navigation />
 
       <main className="flex-grow">
         {/* Hero Section */}

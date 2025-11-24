@@ -1,5 +1,6 @@
 import { getSongs, Song } from "@/lib/sanity";
 import SongCard from "@/components/SongCard";
+import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 
 export const revalidate = 60;
@@ -17,6 +18,7 @@ export default async function RepertoirePage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
+      <Navigation />
       <main className="py-20 px-8 max-w-7xl mx-auto flex-grow">
         <h1 className="text-5xl font-serif font-bold mb-12 text-center text-foreground">
           Our Repertoire

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
-import { Navigation } from "@/components/navigation";
-import { getNavbar } from "@/lib/sanity";
 
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
@@ -21,23 +19,17 @@ export const metadata: Metadata = {
     "The official Digital Heritage archive for the Trinity College Accidentals - preserving 30 years of a cappella excellence.",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navbarData = await getNavbar();
-
   return (
-    <html lang="en">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground h-full flex flex-col`}
+        suppressHydrationWarning
       >
-        <Navigation
-          logo={navbarData?.logo}
-          groupName={navbarData?.groupName}
-          links={navbarData?.links}
-        />
         {children}
       </body>
     </html>

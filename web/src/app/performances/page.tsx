@@ -1,4 +1,5 @@
 import { getPerformances, Performance, urlFor } from "@/lib/sanity";
+import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import BookingForm from "@/components/BookingForm";
 import { PortableText } from "@portabletext/react";
@@ -21,6 +22,7 @@ export default async function PerformancesPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
+      <Navigation />
 
       <main className="flex-grow">
         {/* Header */}

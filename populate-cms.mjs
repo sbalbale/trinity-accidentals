@@ -199,46 +199,6 @@ async function populateCMS() {
     });
     console.log("✓ Footer created:", footer._id);
 
-    // Create Navbar document
-    console.log("\nCreating Navbar document...");
-    const navbar = await client.create({
-      _type: "navbar",
-      groupName: "The Accidentals",
-      links: [
-        {
-          _type: "object",
-          title: "About",
-          url: "/about",
-        },
-        {
-          _type: "object",
-          title: "Members",
-          url: "/members",
-        },
-        {
-          _type: "object",
-          title: "Performances",
-          url: "/performances",
-        },
-        {
-          _type: "object",
-          title: "Repertoire",
-          url: "/repertoire",
-        },
-        {
-          _type: "object",
-          title: "Auditions",
-          url: "/auditions",
-        },
-        {
-          _type: "object",
-          title: "Contact",
-          url: "/contact",
-        },
-      ],
-    });
-    console.log("✓ Navbar created:", navbar._id);
-
     console.log("\n✅ All documents created successfully!");
     console.log(
       "\nYou can now view and edit these documents in Sanity Studio at http://localhost:3333"

@@ -9,7 +9,6 @@ import song from './song'
 import homePage from './homePage'
 import aboutPage from './aboutPage'
 import footer from './footer'
-import navbar from './navbar'
 
 export const schemaTypes = [
   post,
@@ -23,5 +22,4 @@ export const schemaTypes = [
   homePage,
   aboutPage,
   footer,
-  navbar,
 ]

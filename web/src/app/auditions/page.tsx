@@ -1,3 +1,4 @@
+import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import FAQItem from "@/components/FAQItem";
 import Link from "next/link";
@@ -37,6 +38,7 @@ export default async function AuditionsPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
+      <Navigation />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="py-20 bg-background text-foreground text-center">
