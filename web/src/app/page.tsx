@@ -94,15 +94,14 @@ export default async function Home() {
       {/* Stats Section */}
       <section className="py-16 bg-[#0b3c6b]">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {[
-              { number: `${yearsOfLegacy}+`, label: "Years of Legacy" },
+              { number: `${yearsOfLegacy}`, label: "Years of Legacy" },
               { number: `${stats.performancesCount}+`, label: "Performances" },
               {
                 number: `${stats.currentMembersCount}`,
                 label: "Active Members",
               },
-              { number: "12", label: "Albums Released" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
                 <div className="text-4xl md:text-5xl font-serif font-bold text-white mb-2">
