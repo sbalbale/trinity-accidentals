@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 };
 
 import { NavbarWrapper } from "@/components/navbar-wrapper";
+import { Footer } from "@/components/footer";
 
 // ... imports
 
@@ -31,11 +32,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground h-full flex flex-col`}
+        className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground min-h-screen supports-[min-height:100dvh]:min-h-[100dvh] flex flex-col`}
         suppressHydrationWarning
       >
         <NavbarWrapper />
-        {children}
+        <div className="flex-grow flex flex-col">{children}</div>
+        <Footer />
       </body>
     </html>
   );

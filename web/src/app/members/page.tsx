@@ -1,6 +1,5 @@
 import { getMembers, Member } from "@/lib/sanity";
 
-import { Footer } from "@/components/footer";
 import MemberGrid from "@/components/MemberGrid";
 
 export const revalidate = 60;
@@ -17,31 +16,27 @@ export default async function MembersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background flex flex-col flex-grow">
-      <section className="py-20 bg-background flex-grow">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Meet the Brothers
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our talented ensemble of singers, each bringing their unique voice
-              and energy to the group.
-            </p>
-          </div>
-
-          {error && (
-            <div className="text-center text-red-400 mb-8">
-              Error loading members: {error}
-            </div>
-          )}
-
-          {/* Use client component for grid and modal */}
-          <MemberGrid members={members} />
+    <section className="py-20 bg-background flex-grow">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
+            Meet the Brothers
+          </h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Our talented ensemble of singers, each bringing their unique voice
+            and energy to the group.
+          </p>
         </div>
-      </section>
 
-      <Footer />
-    </div>
+        {error && (
+          <div className="text-center text-red-400 mb-8">
+            Error loading members: {error}
+          </div>
+        )}
+
+        {/* Use client component for grid and modal */}
+        <MemberGrid members={members} />
+      </div>
+    </section>
   );
 }
