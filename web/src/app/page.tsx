@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
@@ -20,6 +21,8 @@ export default async function Home() {
     heroSubtitle: null,
     featuredTitle: "Experience the Harmony",
     featuredDescription: null,
+    heroImage: null,
+    featuredImage: null,
   };
 
   try {
@@ -35,6 +38,8 @@ export default async function Home() {
         heroSubtitle: fetchedHome.heroSubtitle,
         featuredTitle: fetchedHome.featuredTitle,
         featuredDescription: fetchedHome.featuredDescription,
+        heroImage: fetchedHome.heroImage,
+        featuredImage: fetchedHome.featuredImage,
       };
     }
   } catch (e) {
@@ -50,7 +55,17 @@ export default async function Home() {
 
       {/* Hero Section */}
       <section className="relative bg-[#07294b] text-white py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/musical-notes-pattern.jpg')] opacity-5"></div>
+        <div className="absolute inset-0 opacity-5">
+          <img
+            src={
+              homeContent.heroImage
+                ? urlFor(homeContent.heroImage).url()
+                : "/musical-notes-pattern.jpg"
+            }
+            alt="Background Pattern"
+            className="w-full h-full object-cover"
+          />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-balance">
@@ -73,19 +88,23 @@ export default async function Home() {
               )}
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-gold text-navy hover:bg-gold/90 font-semibold"
-              >
-                Book Us
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
-              >
-                Listen Now
-              </Button>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                >
+                  Book Us
+                </Button>
+              </Link>
+              <Link href="/repertoire">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-gold text-gold hover:bg-gold hover:text-navy bg-transparent"
+                >
+                  Listen Now
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -143,16 +162,22 @@ export default async function Home() {
                   </p>
                 )}
               </div>
-              <Button
-                size="lg"
-                className="bg-gold text-navy hover:bg-gold/90 font-semibold"
-              >
-                View Performance Schedule
-              </Button>
+              <Link href="/performances">
+                <Button
+                  size="lg"
+                  className="bg-gold text-navy hover:bg-gold/90 font-semibold"
+                >
+                  View Performance Schedule
+                </Button>
+              </Link>
             </div>
             <div className="relative aspect-video bg-light-gray/10 rounded-lg overflow-hidden">
               <img
-                src="/college-a-cappella-group-performing.jpg"
+                src={
+                  homeContent.featuredImage
+                    ? urlFor(homeContent.featuredImage).url()
+                    : "/college-a-cappella-group-performing.jpg"
+                }
                 alt="Accidentals performing on stage"
                 className="w-full h-full object-cover"
               />

@@ -25,9 +25,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full" suppressHydrationWarning>
       <body
         className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground h-full flex flex-col`}
+        suppressHydrationWarning
       >
         {children}
       </body>
