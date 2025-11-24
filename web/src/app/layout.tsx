@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     "The official Digital Heritage archive for the Trinity College Accidentals - preserving 30 years of a cappella excellence.",
 };
 
+import { NavbarWrapper } from "@/components/navbar-wrapper";
+
+// ... imports
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,6 +34,7 @@ export default function RootLayout({
         className={`${openSans.variable} ${merriweather.variable} font-sans antialiased bg-background text-foreground h-full flex flex-col`}
         suppressHydrationWarning
       >
+        <NavbarWrapper />
         {children}
       </body>
     </html>

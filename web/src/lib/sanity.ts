@@ -175,3 +175,17 @@ export async function getFooter(): Promise<FooterData | null> {
   const query = groq`*[_type == "footer"][0]`;
   return client.fetch(query);
 }
+
+export interface NavbarData {
+  logo?: any;
+  groupName?: string;
+  links?: Array<{
+    title: string;
+    url: string;
+  }>;
+}
+
+export async function getNavbar(): Promise<NavbarData | null> {
+  const query = groq`*[_type == "navbar"][0]`;
+  return client.fetch(query);
+}

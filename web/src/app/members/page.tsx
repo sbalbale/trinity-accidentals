@@ -1,5 +1,5 @@
 import { getMembers, Member } from "@/lib/sanity";
-import { Navigation } from "@/components/navigation";
+
 import { Footer } from "@/components/footer";
 import MemberGrid from "@/components/MemberGrid";
 
@@ -18,8 +18,6 @@ export default async function MembersPage() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col flex-grow">
-      <Navigation />
-
       <section className="py-20 bg-background flex-grow">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">

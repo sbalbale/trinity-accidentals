@@ -3,9 +3,26 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Music, Menu, X } from "lucide-react";
+import { NavbarData, urlFor } from "@/lib/sanity";
 
-export function Navigation() {
+interface NavigationProps {
+  data: NavbarData | null;
+}
+
+export function Navigation({ data }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  const links = data?.links || [
+    { title: "About", url: "/about" },
+    { title: "Members", url: "/members" },
+    { title: "Performances", url: "/performances" },
+    { title: "Repertoire", url: "/repertoire" },
+    { title: "Auditions", url: "/auditions" },
+    { title: "Contact", url: "/contact" },
+  ];
+
+  const groupName = data?.groupName || "The Accidentals";
+  const logoUrl = data?.logo ? urlFor(data.logo).url() : null;
 
   return (
     <nav className="sticky top-0 z-50 bg-[#0b3c6b] text-white border-b border-gold/20">
@@ -15,48 +32,25 @@ export function Navigation() {
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           onClick={() => setIsOpen(false)}
         >
-          <Music className="h-6 w-6 text-gold" />
-          <span className="font-serif text-xl font-bold">The Accidentals</span>
+          {logoUrl ? (
+            <img src={logoUrl} alt="Logo" className="h-8 w-8 object-contain" />
+          ) : (
+            <Music className="h-6 w-6 text-gold" />
+          )}
+          <span className="font-serif text-xl font-bold">{groupName}</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
-          <Link
-            href="/about"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/members"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            Members
-          </Link>
-          <Link
-            href="/performances"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            Performances
-          </Link>
-          <Link
-            href="/repertoire"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            Repertoire
-          </Link>
-          <Link
-            href="/auditions"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            Auditions
-          </Link>
-          <Link
-            href="/contact"
-            className="text-white/70 hover:text-gold transition-colors"
-          >
-            Contact
-          </Link>
+          {links.map((link) => (
+            <Link
+              key={link.url}
+              href={link.url}
+              className="text-white/70 hover:text-gold transition-colors"
+            >
+              {link.title}
+            </Link>
+          ))}
         </div>
 
         {/* Mobile Menu Button */}
@@ -72,48 +66,16 @@ export function Navigation() {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full bg-[#0b3c6b] border-b border-gold/20 py-4 px-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-2">
-          <Link
-            href="/about"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </Link>
-          <Link
-            href="/members"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Members
-          </Link>
-          <Link
-            href="/performances"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Performances
-          </Link>
-          <Link
-            href="/repertoire"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Repertoire
-          </Link>
-          <Link
-            href="/auditions"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Auditions
-          </Link>
-          <Link
-            href="/contact"
-            className="text-white/70 hover:text-gold transition-colors text-lg py-2"
-            onClick={() => setIsOpen(false)}
-          >
-            Contact
-          </Link>
+          {links.map((link) => (
+            <Link
+              key={link.url}
+              href={link.url}
+              className="text-white/70 hover:text-gold transition-colors text-lg py-2"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.title}
+            </Link>
+          ))}
         </div>
       )}
     </nav>

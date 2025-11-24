@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Navigation } from "@/components/navigation";
+
 import { Footer } from "@/components/footer";
 import { getSiteStats, getHomePage } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
@@ -51,8 +51,6 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navigation />
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-background text-foreground py-24 md:py-32 overflow-hidden">
