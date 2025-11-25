@@ -180,6 +180,7 @@ export async function getFooter(): Promise<FooterData | null> {
 
 export interface NavbarData {
   logo?: any;
+  logoDark?: any;
   groupName?: string;
   links?: Array<{
     title: string;
@@ -188,6 +189,10 @@ export interface NavbarData {
 }
 
 export async function getNavbar(): Promise<NavbarData | null> {
-  const query = groq`*[_type == "navbar"][0]`;
+  const query = groq`*[_type == "navbar"][0] {
+    ...,
+    logo,
+    logoDark
+  }`;
   return client.fetch(query);
 }

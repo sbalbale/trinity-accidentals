@@ -3,6 +3,10 @@ import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+import { NavbarWrapper } from "@/components/navbar-wrapper";
+import { Footer } from "@/components/footer";
+import { Toaster } from "@/components/ui/toaster";
+
 const merriweather = Merriweather({
   weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
@@ -20,9 +24,6 @@ export const metadata: Metadata = {
     "The official Digital Heritage archive for the Trinity College Accidentals - preserving 30 years of a cappella excellence.",
 };
 
-import { NavbarWrapper } from "@/components/navbar-wrapper";
-import { Footer } from "@/components/footer";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -35,8 +36,9 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <NavbarWrapper />
-        <div className="flex-grow flex flex-col">{children}</div>
+        <div className="flex-grow flex flex-col bg-background">{children}</div>
         <Footer />
+        <Toaster />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
       </body>
     </html>

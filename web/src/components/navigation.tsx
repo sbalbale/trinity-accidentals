@@ -32,11 +32,26 @@ export function Navigation({ data }: NavigationProps) {
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           onClick={() => setIsOpen(false)}
         >
-          {logoUrl ? (
-            <img src={logoUrl} alt="Logo" className="h-8 w-8 object-contain" />
-          ) : (
-            <Music className="h-6 w-6 text-primary" />
-          )}
+          <div className="relative h-8 w-8">
+            {logoUrl ? (
+              <>
+                <img
+                  src={logoUrl}
+                  alt="Logo"
+                  className={`h-full w-full object-contain ${data?.logoDark ? "dark:hidden" : ""}`}
+                />
+                {data?.logoDark && (
+                  <img
+                    src={urlFor(data.logoDark).url()}
+                    alt="Logo Dark"
+                    className="h-full w-full object-contain hidden dark:block absolute top-0 left-0"
+                  />
+                )}
+              </>
+            ) : (
+              <Music className="h-6 w-6 text-primary" />
+            )}
+          </div>
           <span className="font-serif text-xl font-bold">{groupName}</span>
         </Link>
 

@@ -3,8 +3,6 @@
 @plugin "tailwindcss-animate";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   /* Trinity College Accidentals - Light Mode */
 
@@ -20,35 +18,34 @@
   --popover-foreground: #07294b;
 
   /* Primary: Trinity Gold */
-  /* Note: Gold text on white is hard to read, so we use Gold for buttons (backgrounds) */
   --primary: #f3d84a;
-  --primary-foreground: #07294b; /* Navy text on Gold buttons */
+  --primary-foreground: #07294b;
 
-  /* Secondary: Light Navy Tint for subtle backgrounds */
-  --secondary: #f1f5f9; /* Slate 100 / Light Gray-Blue */
+  /* Secondary: Light Navy Tint */
+  --secondary: #f1f5f9;
   --secondary-foreground: #07294b;
 
-  /* Muted: For disabled text or subtitles */
+  /* Muted */
   --muted: #f1f5f9;
-  --muted-foreground: #64748b; /* Slate 500 */
+  --muted-foreground: #64748b;
 
-  /* Accent: Hover states */
+  /* Accent */
   --accent: #f1f5f9;
   --accent-foreground: #07294b;
 
-  /* Destructive: Error states */
+  /* Destructive */
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  /* Borders: Low opacity Navy for consistency */
+  /* Borders */
   --border: rgba(7, 41, 75, 0.15);
   --input: rgba(7, 41, 75, 0.15);
-  --ring: #07294b; /* Navy focus ring */
+  --ring: #07294b;
 
   --radius: 0.625rem;
 
-  /* Sidebar: Often stays dark in light mode, or inverts. Here is the inverted version: */
-  --sidebar: #f8fafc; /* Very light gray */
+  /* Sidebar */
+  --sidebar: #f8fafc;
   --sidebar-foreground: #07294b;
   --sidebar-primary: #07294b;
   --sidebar-primary-foreground: #ffffff;
@@ -57,7 +54,7 @@
   --sidebar-border: rgba(7, 41, 75, 0.1);
   --sidebar-ring: #07294b;
 
-  /* Chart colors (keeping defaults or mapping if needed) */
+  /* Charts */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -67,24 +64,24 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Trinity College Accidentals Brand Colors - Mapped to Semantic Names (Original Dark Theme) */
-    --background: #07294b; /* Trinity Navy */
-    --foreground: #ffffff; /* White */
+    /* Trinity College Accidentals - Dark Mode */
+    --background: #07294b;
+    --foreground: #ffffff;
 
-    --card: #0b3c6b; /* Light Navy */
+    --card: #0b3c6b;
     --card-foreground: #ffffff;
 
     --popover: #0b3c6b;
     --popover-foreground: #ffffff;
 
-    --primary: #f3d84a; /* Gold */
-    --primary-foreground: #07294b; /* Navy */
+    --primary: #f3d84a;
+    --primary-foreground: #07294b;
 
-    --secondary: #051d36; /* Dark Navy */
+    --secondary: #051d36;
     --secondary-foreground: #ffffff;
 
     --muted: #051d36;
-    --muted-foreground: #94a3b8; /* Slate 400 */
+    --muted-foreground: #94a3b8;
 
     --accent: #f3d84a;
     --accent-foreground: #07294b;
@@ -96,6 +93,8 @@
     --input: rgba(255, 255, 255, 0.1);
     --ring: #f3d84a;
 
+    --radius: 0.625rem;
+
     --sidebar: #07294b;
     --sidebar-foreground: #ffffff;
     --sidebar-primary: #f3d84a;
@@ -104,19 +103,13 @@
     --sidebar-accent-foreground: #ffffff;
     --sidebar-border: rgba(255, 255, 255, 0.1);
     --sidebar-ring: #f3d84a;
-
-    /* Chart colors for dark mode */
-    --chart-1: oklch(0.488 0.243 264.376);
-    --chart-2: oklch(0.696 0.17 162.48);
-    --chart-3: oklch(0.769 0.188 70.08);
-    --chart-4: oklch(0.627 0.265 303.9);
-    --chart-5: oklch(0.645 0.246 16.439);
   }
 }
 
-@theme inline {
-  --font-sans: var(--font-open-sans), "Open Sans", system-ui, sans-serif;
-  --font-serif: var(--font-merriweather), "Merriweather", serif;
+@theme {
+  --font-heading: Merriweather, serif;
+  --font-body: "Open Sans", sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -136,15 +129,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -153,6 +138,18 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
   --color-gold: #f3d84a;
   --color-navy: #07294b;
 }
@@ -161,15 +158,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-serif;
+    @apply font-heading;
   }
 }
