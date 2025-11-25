@@ -1,7 +1,7 @@
 # The Trinity College Accidentals | Digital Heritage Platform
 
 ![Status](https://img.shields.io/badge/status-active_development-success)
-![Stack](https://img.shields.io/badge/stack-Next.js_|_Sanity_|_Firebase-blue)
+![Stack](https://img.shields.io/badge/stack-Next.js_|_Sanity_|_Vercel-blue)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 **The official "Digital Heritage" archive and recruitment engine for the Trinity College Accidentals (Est. 1993).**
@@ -12,7 +12,7 @@ This is not just a website; it is a **Headless Digital Archive** designed to pre
 
 ### Key Features
 
-- **Zero-Cost Architecture:** Runs entirely on "Free Tier" infrastructure (Firebase Spark + Sanity Free).
+- **Zero-Cost Architecture:** Runs entirely on "Free Tier" infrastructure (Vercel Hobby + Sanity Free).
 - **Structured Archive:** Members, Songs, and Albums are linked data entities, not just text on a page.
 - **Performance:** Static Site Generation (SSG) ensures sub-second page loads.
 - **Recruitment Funnel:** Dedicated "Audition Mode" to capture prospective interest.
@@ -27,7 +27,7 @@ This project is structured as a **Monorepo** to maintain type safety between the
 | :----------- | :------------------ | :-------------------------------------------------------------------------- |
 | **Frontend** | **Next.js (React)** | Renders the UI. Uses `getStaticProps` to build HTML pages at compile time.  |
 | **CMS**      | **Sanity.io**       | The "Database" and Admin Dashboard. Stores JSON data for members and songs. |
-| **Hosting**  | **Firebase**        | Hosts the static HTML/CSS/JS files on Google's global CDN.                  |
+| **Hosting**  | **Vercel**          | Hosts the Next.js application on Vercel's global edge network.              |
 | **Styling**  | **Tailwind CSS**    | Implements the official Trinity College Brand Identity (PMS 287 C).         |
 
 ---
@@ -39,7 +39,6 @@ We use **NPM Workspaces** to manage dependencies.
 ```text
 trinity-accidentals/
 ├── package.json        # Root configuration & workspace scripts
-├── .firebaserc         # Firebase project aliases
 ├── web/                # WORKSPACE: The Frontend Website
 │   ├── src/            # Components & Pages
 │   ├── public/         # Static assets (Logos, Robots.txt)
@@ -58,7 +57,6 @@ trinity-accidentals/
 
 - Node.js (v18+)
 - Git
-- Firebase CLI (`npm install -g firebase-tools`)
 
 ### 2\. Installation
 
@@ -103,14 +101,17 @@ npm run dev:studio
 
 ### Deploying the Website
 
-The website is hosted on Firebase. Deployment builds the static HTML and pushes it to the CDN.
+The website is hosted on Vercel. Deployment is automatic via GitHub integration.
+
+1. Push your changes to the `main` branch
+2. Vercel will automatically build and deploy
+
+For manual deployment:
 
 ```bash
 # From the root directory
 npm run deploy:web
 ```
-
-_Note: This runs `npm run build` inside `/web` and then `firebase deploy`._
 
 ### Deploying the Studio (CMS)
 
@@ -208,7 +209,7 @@ npm run deploy:studio
 
 **To the future Webmaster (Class of '28, '29, and beyond):**
 
-1.  **Don't Break the Bank:** This architecture is designed to cost **$0/month**. Do not switch to a paid hosting provider (like Vercel Pro or Heroku) unless absolutely necessary.
+1.  **Don't Break the Bank:** This architecture is designed to cost **$0/month** using Vercel's Hobby plan and Sanity's Free tier.
 2.  **Video Strategy:** Never upload video files directly to Sanity or the Repository. It will eat our bandwidth limits. Upload to YouTube/Vimeo and use the URL field in the CMS.
 3.  **Type Safety:** We use TypeScript. If you change a Schema in the Studio, update the Type definitions in the Web folder.
 4.  **Alumni Data:** Never delete a member. Just set their `isActive` toggle to `false` and add their `gradYear`. The goal is to keep the history alive.

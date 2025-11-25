@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 
 **Project:** Trinity College Accidentals Website  
-**Tech Stack:** Next.js (SSG) + Sanity.io (Headless CMS) + Firebase (Hosting)
+**Tech Stack:** Next.js (SSG) + Sanity.io (Headless CMS) + Vercel (Hosting)
 
 ---
 
@@ -15,7 +15,7 @@ The architecture is strictly selected to fit within **Free Tier** limits to ensu
 | :----------- | :---------------------- | :------------------------------------------------------------------------------------------------------ |
 | **Frontend** | **Next.js**             | Static Site Generation (SSG) for pre-rendered HTML. Ensures >90 Lighthouse score and security.          |
 | **CMS**      | **Sanity.io**           | Generous free tier based on bandwidth/users, not record counts (unlike Contentful). Fully managed SaaS. |
-| **Hosting**  | **Firebase**            | "Spark Plan" offers free global CDN hosting for static assets.                                          |
+| **Hosting**  | **Vercel**              | Free "Hobby" plan offers global edge network hosting for Next.js applications.                          |
 | **Database** | **Sanity Content Lake** | No SQL maintenance required.                                                                            |
 
 ---
@@ -44,7 +44,7 @@ The architecture is strictly selected to fit within **Free Tier** limits to ensu
 ## 3. Non-Functional Requirements
 
 - **NFR-PERF-01:** Lighthouse Performance score >90 via SSG.
-- **NFR-COST-01:** Total hosting/storage must remain within Firebase Spark limits (10GB storage, 360MB/day transfer). Video assets to be offloaded to YouTube/Vimeo embeds.
+- **NFR-COST-01:** Total hosting must remain within Vercel Hobby plan limits. Video assets to be offloaded to YouTube/Vimeo embeds.
 - **NFR-BRAND-01:** Accessibility compliance (WCAG AA). Trinity Gold (#EAAA00) must **not** be used for text on white backgrounds.
 - **NFR-LEGAL-01:** Footer must include "Student Organization" disclaimer distinct from College Administration.
 
@@ -114,9 +114,9 @@ export default {
 
 1.  **Next.js:** `npx create-next-app@latest trinity-accidentals-site --typescript --tailwind --eslint`
 2.  **Sanity:** `npm create sanity@latest` (Project Name: `trinity-accidentals-cms`)
-3.  **Firebase:** `firebase init hosting` (Public directory: `out`)
+3.  **Vercel:** Connect repository via Vercel dashboard for automatic deployments
 
 ### 5.2 Deployment Pipeline
 
-- **Build Trigger:** Connect GitHub Repository to **Firebase App Hosting**.
-- **Content Hook:** Configure Sanity Webhook to trigger a Rebuild on Firebase whenever content is "Published." This ensures the Static Site is always fresh.
+- **Build Trigger:** Connect GitHub Repository to **Vercel** for automatic deployments.
+- **Content Hook:** Configure Sanity Webhook to trigger a Rebuild on Vercel whenever content is "Published." This ensures the Static Site is always fresh.

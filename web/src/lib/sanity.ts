@@ -48,9 +48,9 @@ export interface Song {
   recordingUrl?: string;
 }
 
-// GROQ query to fetch members, sorted by voicePart then name
+// GROQ query to fetch members, sorted by gradYear (seniors first) then last name
 export async function getMembers(): Promise<Member[]> {
-  const query = `*[_type == "member" && isActive == true] | order(voicePart asc, name asc) {
+  const query = `*[_type == "member" && isActive == true] | order(gradYear asc) {
     _id,
     name,
     voicePart,
@@ -61,7 +61,20 @@ export async function getMembers(): Promise<Member[]> {
     image
   }`;
 
-  return client.fetch(query);
+  const members = await client.fetch<Member[]>(query);
+
+  // Sort by last name within the already grad-year-sorted results
+  return members.sort((a, b) => {
+    // First compare by gradYear (ascending - seniors first, lower years = earlier graduation)
+    if (a.gradYear !== b.gradYear) {
+      return (a.gradYear || 9999) - (b.gradYear || 9999);
+    }
+
+    // Then compare by last name (ascending)
+    const lastNameA = a.name.split(" ").pop() || "";
+    const lastNameB = b.name.split(" ").pop() || "";
+    return lastNameA.localeCompare(lastNameB);
+  });
 }
 
 // GROQ query to fetch songs with expanded references
