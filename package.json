@@ -10,6 +10,7 @@
     "dev:studio": "npm --workspace accidentals-content-hub run dev",
     "build:web": "npm --workspace web run build",
     "deploy:web": "npm --workspace web run deploy",
-    "deploy:studio": "npm --workspace accidentals-content-hub run deploy"
+    "deploy:studio": "npm --workspace accidentals-content-hub run deploy",
+    "deploy": "firebase deploy"
   }
 }

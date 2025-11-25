@@ -53,16 +53,14 @@ export default async function Home() {
     <main className="flex-grow">
       {/* Hero Section */}
       <section className="relative bg-background text-foreground py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <img
-            src={
-              homeContent.heroImage
-                ? urlFor(homeContent.heroImage).url()
-                : "/musical-notes-pattern.jpg"
-            }
-            alt="Background Pattern"
-            className="w-full h-full object-cover"
-          />
+        <div className="absolute inset-0 opacity-15">
+          {homeContent.heroImage && (
+            <img
+              src={urlFor(homeContent.heroImage).url()}
+              alt="Background Pattern"
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
