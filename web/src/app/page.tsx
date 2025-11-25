@@ -87,7 +87,7 @@ export default async function Home() {
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                  className="bg-primary text-primary-foreground hover:bg-background hover:text-primary hover:border-primary border-2 border-primary font-semibold transition-all"
                 >
                   Book Us
                 </Button>
@@ -95,8 +95,7 @@ export default async function Home() {
               <Link href="/repertoire">
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
+                  className="border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground font-semibold transition-all"
                 >
                   Listen Now
                 </Button>
