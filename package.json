@@ -12,5 +12,9 @@
     "deploy:web": "npm --workspace web run deploy",
     "deploy:studio": "npm --workspace accidentals-content-hub run deploy",
     "vercel-build": "npm --workspace web run build"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0"
   }
 }

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Merriweather, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 import { NavbarWrapper } from "@/components/navbar-wrapper";
 import { Footer } from "@/components/footer";
@@ -40,6 +42,8 @@ export default function RootLayout({
         <Footer />
         <Toaster />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
