@@ -6,53 +6,109 @@
 :root {
   /* Trinity College Accidentals - Light Mode */
 
-  /* Backgrounds: Clean White/Off-White */
-  --background: #f8fafc;
-  --foreground: #07294b; /* Navy Text */
+  /* Palette - Text */
+  --text-50: #f5eff0;
+  --text-100: #ebe0e1;
+  --text-200: #d7c1c3;
+  --text-300: #c3a2a6;
+  --text-400: #af8388;
+  --text-500: #9c636a;
+  --text-600: #7c5055;
+  --text-700: #5d3c40;
+  --text-800: #3e282a;
+  --text-900: #1f1415;
+  --text-950: #100a0b;
 
-  /* Cards: White with subtle borders usually */
-  --card: #ffffff;
-  --card-foreground: #07294b;
+  /* Palette - Background */
+  --background-50: #fce9eb;
+  --background-100: #f9d2d6;
+  --background-200: #f2a6ad;
+  --background-300: #ec7985;
+  --background-400: #e64c5c;
+  --background-500: #df2033;
+  --background-600: #b31929;
+  --background-700: #86131f;
+  --background-800: #590d14;
+  --background-900: #2d060a;
+  --background-950: #160305;
 
-  --popover: #ffffff;
-  --popover-foreground: #07294b;
+  /* Palette - Primary */
+  --primary-50: #f6efef;
+  --primary-100: #eddedf;
+  --primary-200: #dbbdc0;
+  --primary-300: #c99ca0;
+  --primary-400: #b77b80;
+  --primary-500: #a45b61;
+  --primary-600: #84484d;
+  --primary-700: #63363a;
+  --primary-800: #422427;
+  --primary-900: #211213;
+  --primary-950: #10090a;
 
-  /* Primary: Trinity Gold */
-  --primary: #f3d84a;
-  --primary-foreground: #07294b;
+  /* Palette - Secondary */
+  --secondary-50: #fdfae7;
+  --secondary-100: #fcf4cf;
+  --secondary-200: #f9ea9f;
+  --secondary-300: #f6df6f;
+  --secondary-400: #f3d53f;
+  --secondary-500: #f0ca0f;
+  --secondary-600: #c0a20c;
+  --secondary-700: #907909;
+  --secondary-800: #605106;
+  --secondary-900: #302803;
+  --secondary-950: #181402;
 
-  /* Secondary: Light Navy Tint */
-  --secondary: #f1f5f9;
-  --secondary-foreground: #07294b;
+  /* Palette - Accent */
+  --accent-50: #eff0f5;
+  --accent-100: #dfe1ec;
+  --accent-200: #bfc4d9;
+  --accent-300: #9fa6c6;
+  --accent-400: #8089b3;
+  --accent-500: #606b9f;
+  --accent-600: #4d5680;
+  --accent-700: #394060;
+  --accent-800: #262b40;
+  --accent-900: #131520;
+  /* Semantic Mappings */
+  --background: var(--background-50);
+  --foreground: var(--text-950);
 
-  /* Muted */
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --card: var(--background-100);
+  --card-foreground: var(--text-950);
 
-  /* Accent */
-  --accent: #f1f5f9;
-  --accent-foreground: #07294b;
+  --popover: var(--background-50);
+  --popover-foreground: var(--text-950);
 
-  /* Destructive */
+  --primary: var(--primary-500);
+  --primary-foreground: var(--primary-950);
+
+  --secondary: var(--secondary-200);
+  --secondary-foreground: var(--secondary-900);
+
+  --muted: var(--text-100);
+  --muted-foreground: var(--text-500);
+
+  --accent: var(--accent-200);
+  --accent-foreground: var(--accent-900);
+
   --destructive: #ef4444;
   --destructive-foreground: #ffffff;
 
-  /* Borders */
-  --border: rgba(7, 41, 75, 0.15);
-  --input: rgba(7, 41, 75, 0.15);
-  --ring: #07294b;
+  --border: var(--text-200);
+  --input: var(--text-200);
+  --ring: var(--primary-500);
 
   --radius: 0.625rem;
 
   /* Sidebar */
-  --sidebar: #f8fafc;
-  --sidebar-foreground: #07294b;
-  --sidebar-primary: #07294b;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f1f5f9;
-  --sidebar-accent-foreground: #07294b;
-  --sidebar-border: rgba(7, 41, 75, 0.1);
-  --sidebar-ring: #07294b;
+  --sidebar: var(--background-50);
+  --sidebar-foreground: var(--text-950);
+  --sidebar-primary: var(--primary-500);
+  --sidebar-primary-foreground: var(--primary-950);
+  --sidebar-accent: var(--accent-200);
+  --sidebar-accent-foreground: var(--accent-900);
+  --sidebar-border: var(--text-200);
+  --sidebar-ring: var(--primary-500);
 
   /* Charts */
   --chart-1: oklch(0.646 0.222 41.116);
@@ -65,44 +121,111 @@
 @media (prefers-color-scheme: dark) {
   :root {
     /* Trinity College Accidentals - Dark Mode */
-    --background: #07294b;
-    --foreground: #ffffff;
 
-    --card: #0b3c6b;
-    --card-foreground: #ffffff;
+    /* Palette - Text */
+    --text-50: #100a0b;
+    --text-100: #1f1415;
+    --text-200: #3e282a;
+    --text-300: #5d3c40;
+    --text-400: #7c5055;
+    --text-500: #9c636a;
+    --text-600: #af8388;
+    --text-700: #c3a2a6;
+    --text-800: #d7c1c3;
+    --text-900: #ebe0e1;
+    --text-950: #f5eff0;
 
-    --popover: #0b3c6b;
-    --popover-foreground: #ffffff;
+    /* Palette - Background */
+    --background-50: #160305;
+    --background-100: #2d060a;
+    --background-200: #590d14;
+    --background-300: #86131f;
+    --background-400: #b31929;
+    --background-500: #df2033;
+    --background-600: #e64c5c;
+    --background-700: #ec7985;
+    --background-800: #f2a6ad;
+    --background-900: #f9d2d6;
+    --background-950: #fce9eb;
 
-    --primary: #f3d84a;
-    --primary-foreground: #07294b;
+    /* Palette - Primary */
+    --primary-50: #10090a;
+    --primary-100: #211213;
+    --primary-200: #422427;
+    --primary-300: #63363a;
+    --primary-400: #84484d;
+    --primary-500: #a45b61;
+    --primary-600: #b77b80;
+    --primary-700: #c99ca0;
+    --primary-800: #dbbdc0;
+    --primary-900: #eddedf;
+    --primary-950: #f6efef;
 
-    --secondary: #051d36;
-    --secondary-foreground: #ffffff;
+    /* Palette - Secondary */
+    --secondary-50: #181402;
+    --secondary-100: #302803;
+    --secondary-200: #605106;
+    --secondary-300: #907909;
+    --secondary-400: #c0a20c;
+    --secondary-500: #f0ca0f;
+    --secondary-600: #f3d53f;
+    --secondary-700: #f6df6f;
+    --secondary-800: #f9ea9f;
+    --secondary-900: #fcf4cf;
+    --secondary-950: #fdfae7;
 
-    --muted: #051d36;
-    --muted-foreground: #94a3b8;
+    /* Palette - Accent */
+    --accent-50: #0a0b10;
+    --accent-100: #131520;
+    --accent-200: #262b40;
+    --accent-300: #394060;
+    --accent-400: #4d5680;
+    --accent-500: #606b9f;
+    --accent-600: #8089b3;
+    --accent-700: #9fa6c6;
+    --accent-800: #bfc4d9;
+    --accent-900: #dfe1ec;
+    --accent-950: #eff0f5;
+    /* Semantic Mappings */
+    --background: var(--background-50);
+    --foreground: var(--text-950);
 
-    --accent: #f3d84a;
-    --accent-foreground: #07294b;
+    --card: var(--background-100);
+    --card-foreground: var(--text-950);
+
+    --popover: var(--background-50);
+    --popover-foreground: var(--text-950);
+
+    --primary: var(--primary-500);
+    --primary-foreground: var(--primary-950);
+
+    --secondary: var(--secondary-200);
+    --secondary-foreground: var(--secondary-900);
+
+    --muted: var(--text-100);
+    --muted-foreground: var(--text-500);
+
+    --accent: var(--accent-200);
+    --accent-foreground: var(--accent-900);
 
     --destructive: #ef4444;
     --destructive-foreground: #ffffff;
 
-    --border: rgba(255, 255, 255, 0.1);
-    --input: rgba(255, 255, 255, 0.1);
-    --ring: #f3d84a;
+    --border: var(--text-200);
+    --input: var(--text-200);
+    --ring: var(--primary-500);
 
     --radius: 0.625rem;
 
-    --sidebar: #07294b;
-    --sidebar-foreground: #ffffff;
-    --sidebar-primary: #f3d84a;
-    --sidebar-primary-foreground: #07294b;
-    --sidebar-accent: #0b3c6b;
-    --sidebar-accent-foreground: #ffffff;
-    --sidebar-border: rgba(255, 255, 255, 0.1);
-    --sidebar-ring: #f3d84a;
+    /* Sidebar */
+    --sidebar: var(--background-50);
+    --sidebar-foreground: var(--text-950);
+    --sidebar-primary: var(--primary-500);
+    --sidebar-primary-foreground: var(--primary-950);
+    --sidebar-accent: var(--accent-200);
+    --sidebar-accent-foreground: var(--accent-900);
+    --sidebar-border: var(--text-200);
+    --sidebar-ring: var(--primary-500);
   }
 }
 
