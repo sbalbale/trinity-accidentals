@@ -8,6 +8,7 @@ import { portableTextComponents } from "@/components/portable-text";
 export const revalidate = 60;
 
 export default async function AboutPage() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let aboutContent: any = {
     title: "Our Legacy",
     description: null,
@@ -62,20 +63,23 @@ export default async function AboutPage() {
             ) : (
               <p>
                 Since our founding, the Trinity College Accidentals have been
-                more than just a vocal group—we're a brotherhood bound by our
-                love of music and commitment to excellence. Through generations
-                of performers, we've carried forward a tradition of artistry,
-                camaraderie, and unforgettable performances.
+                more than just a vocal group—we&apos;re a brotherhood bound by
+                our love of music and commitment to excellence. Through
+                generations of performers, we&apos;ve carried forward a
+                tradition of artistry, camaraderie, and unforgettable
+                performances.
               </p>
             )}
           </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mt-16">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {aboutContent.values.map((value: any, i: number) => {
             // Get the icon component from lucide-react based on the icon name
             const iconName = value.icon || "Users";
             const IconComponent =
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               (LucideIcons as any)[iconName] || (LucideIcons as any).Users;
 
             return (
