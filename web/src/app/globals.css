@@ -87,7 +87,7 @@
   --secondary-foreground: var(--secondary-900);
 
   --muted: var(--text-100);
-  --muted-foreground: var(--text-500);
+  --muted-foreground: var(--text-800);
 
   --accent: var(--accent-200);
   --accent-foreground: var(--accent-900);
@@ -204,7 +204,7 @@
     --secondary-foreground: var(--secondary-900);
 
     --muted: var(--text-100);
-    --muted-foreground: var(--text-500);
+    --muted-foreground: var(--text-800);
 
     --accent: var(--accent-200);
     --accent-foreground: var(--accent-900);
