@@ -22,7 +22,7 @@ export async function Footer() {
   const tagline = footerData?.tagline || "A brotherhood of harmony since 1993";
 
   return (
-    <footer className="bg-card border-t border-white/10 py-8 text-slate-300 mt-auto relative">
+    <footer className="bg-card border-t border-border py-8 text-muted-foreground mt-auto relative">
       {/* iOS Safari Footer Extension Hack */}
       <div
         style={{
@@ -43,7 +43,7 @@ export async function Footer() {
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-center md:text-left">
           <p>{copyrightText}</p>
-          <p className="text-sm text-slate-400">{tagline}</p>
+          <p className="text-sm text-muted-foreground">{tagline}</p>
         </div>
 
         {footerData?.socialLinks && (
@@ -65,7 +65,7 @@ export async function Footer() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-300 hover:text-[#f3d84a] transition-colors"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Icon className="w-5 h-5" />
                   <span className="sr-only">{link.platform}</span>

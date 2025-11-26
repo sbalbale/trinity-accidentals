@@ -14,14 +14,6 @@ export default defineType({
       },
     },
     {
-      name: 'logoDark',
-      title: 'Dark Mode Logo',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
       name: 'groupName',
       title: 'Group Name',
       type: 'string',
