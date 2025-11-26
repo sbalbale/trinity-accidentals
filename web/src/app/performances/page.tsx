@@ -4,7 +4,7 @@ import BookingForm from "@/components/BookingForm";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
-import { Calendar, MapPin, Play, ExternalLink } from "lucide-react";
+import { MapPin, Play, ExternalLink } from "lucide-react";
 
 export const revalidate = 60;
 

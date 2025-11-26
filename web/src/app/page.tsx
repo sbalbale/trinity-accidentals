@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 import { getSiteStats, getHomePage } from "@/lib/sanity";
 import { urlFor } from "@/lib/sanity";
@@ -56,10 +57,12 @@ export default async function Home() {
       <section className="relative bg-background text-foreground py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 opacity-15">
           {homeContent.heroImage && (
-            <img
+            <Image
               src={urlFor(homeContent.heroImage).url()}
               alt="Background Pattern"
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
           )}
         </div>
@@ -175,14 +178,15 @@ export default async function Home() {
               </Link>
             </div>
             <div className="relative aspect-video bg-muted/10 rounded-lg overflow-hidden">
-              <img
+              <Image
                 src={
                   homeContent.featuredImage
                     ? urlFor(homeContent.featuredImage).url()
                     : "/college-a-cappella-group-performing.jpg"
                 }
                 alt="Accidentals performing on stage"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
           </div>

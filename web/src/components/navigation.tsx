@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Music, Menu, X } from "lucide-react";
 import { NavbarData, urlFor } from "@/lib/sanity";
 
@@ -35,16 +36,18 @@ export function Navigation({ data }: NavigationProps) {
           <div className="relative h-8 w-8">
             {logoUrl ? (
               <>
-                <img
+                <Image
                   src={logoUrl}
                   alt="Logo"
-                  className={`h-full w-full object-contain ${data?.logoDark ? "dark:hidden" : ""}`}
+                  fill
+                  className={`object-contain ${data?.logoDark ? "dark:hidden" : ""}`}
                 />
                 {data?.logoDark && (
-                  <img
+                  <Image
                     src={urlFor(data.logoDark).url()}
                     alt="Logo Dark"
-                    className="h-full w-full object-contain hidden dark:block absolute top-0 left-0"
+                    fill
+                    className="object-contain hidden dark:block absolute top-0 left-0"
                   />
                 )}
               </>
