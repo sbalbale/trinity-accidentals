@@ -26,10 +26,10 @@ jobs:
       - name: Lint Web
         run: npm run lint --workspace=web
 
-      - name: 'notify vercel'
-        uses: 'vercel/repository-dispatch/actions/status@v1'
+      - name: "notify vercel"
+        uses: "vercel/repository-dispatch/actions/status@v1"
         with:
-          name: Vercel - web: lint
+          name: "Vercel - web: lint"
 
       - name: Build Web
         run: npm run build --workspace=web
