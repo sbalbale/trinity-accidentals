@@ -137,7 +137,7 @@ export default async function PerformancesPage() {
             </h2>
             <p className="text-lg text-muted-foreground">
               Want the Accidentals at your next event? Fill out the form below
-              and we'll be in touch!
+              and we&apos;ll be in touch!
             </p>
           </div>
 

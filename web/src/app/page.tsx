@@ -16,6 +16,7 @@ export default async function Home() {
     songsCount: 100,
   }; // Fallback values
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let homeContent: any = {
     heroTitle: "The Trinity College Accidentals",
     heroSubtitle: null,

@@ -97,15 +97,15 @@ export interface Performance {
   title: string;
   date: string;
   location: string;
-  description: any;
-  image: any;
+  description: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  image: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   recordingUrl?: string;
 }
 
 export interface Audition {
   _id: string;
   title: string;
-  description: any;
+  description: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   faqs: {
     question: string;
     answer: string;
@@ -150,11 +150,11 @@ export async function getSiteStats(): Promise<SiteStats> {
 
 export interface HomePage {
   heroTitle: string;
-  heroSubtitle: any; // block content
-  heroImage?: any;
+  heroSubtitle: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  heroImage?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   featuredTitle: string;
-  featuredDescription: any; // block content
-  featuredImage?: any;
+  featuredDescription: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  featuredImage?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 export async function getHomePage(): Promise<HomePage | null> {
@@ -164,7 +164,7 @@ export async function getHomePage(): Promise<HomePage | null> {
 
 export interface AboutPage {
   title: string;
-  description: any; // block content
+  description: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   values?: Array<{
     title: string;
     description: string;
@@ -192,8 +192,8 @@ export async function getFooter(): Promise<FooterData | null> {
 }
 
 export interface NavbarData {
-  logo?: any;
-  logoDark?: any;
+  logo?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  logoDark?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
   groupName?: string;
   links?: Array<{
     title: string;

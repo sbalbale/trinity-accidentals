@@ -11,7 +11,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-lg text-foreground/80 leading-relaxed">
               Interested in booking the Accidentals for your event? Fill out the
-              form below and we'll get back to you as soon as possible.
+              form below and we&apos;ll get back to you as soon as possible.
             </p>
           </div>
 
