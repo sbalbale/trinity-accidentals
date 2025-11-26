@@ -113,6 +113,8 @@ For manual deployment:
 npm run deploy:web
 ```
 
+> **Note:** This project uses a `vercel.json` file in the root directory to explicitly set the `outputDirectory` to `web/.next`. This is required for Vercel to correctly locate the build artifacts in this monorepo structure.
+
 ### Deploying the Studio (CMS)
 
 If you update the Data Schemas (e.g., adding a new field for "Beatboxer"), you must deploy the Studio so the Business Manager can see it.
@@ -121,6 +123,19 @@ If you update the Data Schemas (e.g., adding a new field for "Beatboxer"), you m
 # From the root directory
 npm run deploy:studio
 ```
+
+---
+
+---
+
+## 📊 Analytics & Performance
+
+We use Vercel's native tools to monitor real-world performance and user behavior.
+
+- **Speed Insights:** Monitors Core Web Vitals (LCP, FID, CLS) to ensure the site remains fast.
+- **Web Analytics:** Privacy-friendly traffic analysis to understand our audience.
+
+These components are integrated into the root layout (`web/src/app/layout.tsx`) and function automatically on Vercel deployments.
 
 ---
 
