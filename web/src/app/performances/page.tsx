@@ -78,7 +78,8 @@ export default async function PerformancesPage() {
                   )}
                   <div className="p-8 flex-1">
                     <div className="text-sm font-bold text-primary mb-2 uppercase tracking-wide">
-                      {new Date(perf.date).toLocaleDateString(undefined, {
+                      {new Date(perf.date).toLocaleDateString("en-US", {
+                        timeZone: "America/New_York",
                         weekday: "long",
                         year: "numeric",
                         month: "long",
